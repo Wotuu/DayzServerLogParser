@@ -7,12 +7,17 @@ using System.IO;
 
 namespace DayzLogParser.FTP {
 
-    public delegate void ProgressUpdated(long current, long length);
+    public delegate void ProgressUpdated(long current, long length, double speed);
+    public delegate void DownloadStopped();
+    public delegate void DownloadFinished(String filePath);
 
     public class FTPDownloader {
         public String ip { get; private set; }
         public NetworkCredential credentials { get; private set; }
         public ProgressUpdated progressUpdatedListeners { get; set; }
+        public DownloadStopped downloadStoppedListeners { get; set; }
+        public DownloadFinished downloadFinishedListeners { get; set; }
+
 
         public long currentProgress { get; set; }
         public long length { get; set; }
@@ -57,7 +62,7 @@ namespace DayzLogParser.FTP {
             request.Method = WebRequestMethods.Ftp.DownloadFile;
             request.UsePassive = true;
 
-            // This example assumes the FTP site uses anonymous logon.
+            // This assumes the FTP site uses normal logon.
             request.Credentials = this.credentials;
             request.ContentLength = 0;
 
@@ -66,50 +71,69 @@ namespace DayzLogParser.FTP {
             Stream responseStream = response.GetResponseStream();
 
             System.IO.Directory.CreateDirectory(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + filePath));
-            FileStream file = File.Create(AppDomain.CurrentDomain.BaseDirectory + filePath);
+            String fullFilePath = AppDomain.CurrentDomain.BaseDirectory + filePath;
+            FileStream file = File.Create(fullFilePath);
 
             byte[] buffer = new byte[32 * 1024];
             int read = 0;
-            while ((read = responseStream.Read(buffer, 0, buffer.Length)) > 0) {
 
-                if (_stopped) {
+            // Initialize some variables to keep track of speed
+            double currSpeed = 0;
+            double currTime = 0;
+            double lastSpeedUpdate = 0;
+            double bytesDownloadedSinceLastUpdate = 0;
+            int speedUpdateMS = 1000;
+            while (!_stopped && (read = responseStream.Read(buffer, 0, buffer.Length)) > 0) {
 
-                    try {
-                        response.Close();
-                        responseStream.Close();
-                        file.Close();
-                        this.Cleanup();
-                    } catch (Exception e) {
-
-                    } finally {
-                        if (response != null)
-                            response.Close();
-                        if (responseStream != null)
-                            responseStream.Close();
-                        if (file != null)
-                            file.Close();
-                        this.Cleanup();
-                    }
-                    return;
+                // If we need to update the speed
+                if ((currTime = new TimeSpan(DateTime.UtcNow.Ticks).TotalMilliseconds) - lastSpeedUpdate > speedUpdateMS) {
+                    lastSpeedUpdate = currTime;
+                    currSpeed = bytesDownloadedSinceLastUpdate;
+                    bytesDownloadedSinceLastUpdate = 0;
                 }
-
-                // Console.WriteLine(line);
-
-                // this.currentProgress += read
 
                 file.Write(buffer, 0, read);
 
                 this.currentProgress += read;
+                // Track how many bytes downloaded this second
+                bytesDownloadedSinceLastUpdate += read;
 
-                this.progressUpdatedListeners(this.currentProgress, this.length);
+                this.progressUpdatedListeners(this.currentProgress, this.length, currSpeed);
             }
 
-            Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
+            #region Check if was stopped and handle
+            if (_stopped) {
 
+                try {
+                    response.Close();
+                    responseStream.Close();
+                    file.Close();
+                    this.Cleanup();
+                } catch (Exception e) {
+
+                } finally {
+                    if (response != null)
+                        response.Close();
+                    if (responseStream != null)
+                        responseStream.Close();
+                    if (file != null)
+                        file.Close();
+                    this.Cleanup();
+                }
+
+                this.downloadStoppedListeners();
+
+                return;
+            }
+            #endregion
+
+            Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
 
             file.Close();
             response.Close();
             responseStream.Close();
+
+            this.downloadFinishedListeners(fullFilePath);
         }
 
         /// <summary>

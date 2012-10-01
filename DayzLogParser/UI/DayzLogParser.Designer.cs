@@ -44,10 +44,14 @@
             this.blisshiveFetchLogLbl = new System.Windows.Forms.Label();
             this.warningPanel = new System.Windows.Forms.Panel();
             this.warningsLbl = new System.Windows.Forms.Label();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripDownloadStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripDownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
             this.blisshiveFetchMinutesTF = new DayzLogParser.UI.IntTextBox();
             this.logfilesTabControl.SuspendLayout();
             this.blisshiveTab.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // blisshivePlayerTimelinePanel
@@ -69,7 +73,7 @@
             this.blisshivePlayerTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            this.blisshivePlayerTree.Size = new System.Drawing.Size(219, 406);
+            this.blisshivePlayerTree.Size = new System.Drawing.Size(219, 397);
             this.blisshivePlayerTree.TabIndex = 1;
             // 
             // exitToolStripMenuItem
@@ -95,13 +99,13 @@
             // 
             this.exitMenuItem.Index = 0;
             this.exitMenuItem.Text = "Exit";
-            this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
+            this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
             // optionsMenuItem
             // 
             this.optionsMenuItem.Index = 1;
             this.optionsMenuItem.Text = "Options";
-            this.optionsMenuItem.Click += new System.EventHandler(this.optionsMenuItem_Click);
+            this.optionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
             // 
             // blisshiveDownloadLogBtn
             // 
@@ -112,22 +116,22 @@
             this.blisshiveDownloadLogBtn.TabIndex = 2;
             this.blisshiveDownloadLogBtn.Text = "Start";
             this.blisshiveDownloadLogBtn.UseVisualStyleBackColor = true;
-            this.blisshiveDownloadLogBtn.Click += new System.EventHandler(this.blisshiveDownloadLogBtn_Click);
+            this.blisshiveDownloadLogBtn.Click += new System.EventHandler(this.BlisshiveDownloadLogBtn_Click);
             // 
             // logfilesTabControl
             // 
             this.logfilesTabControl.Controls.Add(this.blisshiveTab);
-            this.logfilesTabControl.Location = new System.Drawing.Point(12, 12);
+            this.logfilesTabControl.Location = new System.Drawing.Point(9, 7);
             this.logfilesTabControl.Name = "logfilesTabControl";
             this.logfilesTabControl.SelectedIndex = 0;
-            this.logfilesTabControl.Size = new System.Drawing.Size(935, 468);
+            this.logfilesTabControl.Size = new System.Drawing.Size(935, 458);
             this.logfilesTabControl.TabIndex = 3;
             // 
             // blisshiveTab
             // 
             this.blisshiveTab.Controls.Add(this.panel1);
-            this.blisshiveTab.Controls.Add(this.blisshiveLogFetchTimeDropdown);
             this.blisshiveTab.Controls.Add(this.blisshiveDownloadProgressBar);
+            this.blisshiveTab.Controls.Add(this.blisshiveLogFetchTimeDropdown);
             this.blisshiveTab.Controls.Add(this.blisshiveFetchMinutesTF);
             this.blisshiveTab.Controls.Add(this.blisshiveFetchLogLbl);
             this.blisshiveTab.Controls.Add(this.blisshivePlayerTree);
@@ -136,7 +140,7 @@
             this.blisshiveTab.Location = new System.Drawing.Point(4, 22);
             this.blisshiveTab.Name = "blisshiveTab";
             this.blisshiveTab.Padding = new System.Windows.Forms.Padding(3);
-            this.blisshiveTab.Size = new System.Drawing.Size(927, 442);
+            this.blisshiveTab.Size = new System.Drawing.Size(927, 432);
             this.blisshiveTab.TabIndex = 0;
             this.blisshiveTab.Text = "blisshive.log";
             this.blisshiveTab.UseVisualStyleBackColor = true;
@@ -148,7 +152,7 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(232, 138);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(689, 298);
+            this.panel1.Size = new System.Drawing.Size(689, 289);
             this.panel1.TabIndex = 7;
             // 
             // blisshiveRawLogLbl
@@ -162,10 +166,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 29);
+            this.textBox1.Location = new System.Drawing.Point(0, 25);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(682, 266);
+            this.textBox1.Size = new System.Drawing.Size(689, 264);
             this.textBox1.TabIndex = 0;
             // 
             // blisshiveLogFetchTimeDropdown
@@ -182,7 +186,7 @@
             // 
             // blisshiveDownloadProgressBar
             // 
-            this.blisshiveDownloadProgressBar.Location = new System.Drawing.Point(313, 4);
+            this.blisshiveDownloadProgressBar.Location = new System.Drawing.Point(313, 3);
             this.blisshiveDownloadProgressBar.Name = "blisshiveDownloadProgressBar";
             this.blisshiveDownloadProgressBar.Size = new System.Drawing.Size(608, 23);
             this.blisshiveDownloadProgressBar.TabIndex = 5;
@@ -198,19 +202,40 @@
             // 
             // warningPanel
             // 
-            this.warningPanel.Location = new System.Drawing.Point(950, 34);
+            this.warningPanel.Location = new System.Drawing.Point(950, 30);
             this.warningPanel.Name = "warningPanel";
-            this.warningPanel.Size = new System.Drawing.Size(200, 442);
+            this.warningPanel.Size = new System.Drawing.Size(200, 458);
             this.warningPanel.TabIndex = 4;
             // 
             // warningsLbl
             // 
             this.warningsLbl.AutoSize = true;
-            this.warningsLbl.Location = new System.Drawing.Point(950, 12);
+            this.warningsLbl.Location = new System.Drawing.Point(950, 9);
             this.warningsLbl.Name = "warningsLbl";
             this.warningsLbl.Size = new System.Drawing.Size(52, 13);
             this.warningsLbl.TabIndex = 5;
             this.warningsLbl.Text = "Warnings";
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDownloadStatus,
+            this.toolStripDownloadSpeed});
+            this.statusStrip.Location = new System.Drawing.Point(0, 489);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1155, 22);
+            this.statusStrip.TabIndex = 6;
+            this.statusStrip.Text = "Just a test text";
+            // 
+            // toolStripDownloadStatus
+            // 
+            this.toolStripDownloadStatus.Name = "toolStripDownloadStatus";
+            this.toolStripDownloadStatus.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripDownloadSpeed
+            // 
+            this.toolStripDownloadSpeed.Name = "toolStripDownloadSpeed";
+            this.toolStripDownloadSpeed.Size = new System.Drawing.Size(0, 17);
             // 
             // blisshiveFetchMinutesTF
             // 
@@ -218,13 +243,14 @@
             this.blisshiveFetchMinutesTF.Name = "blisshiveFetchMinutesTF";
             this.blisshiveFetchMinutesTF.Size = new System.Drawing.Size(41, 20);
             this.blisshiveFetchMinutesTF.TabIndex = 4;
-            this.blisshiveFetchMinutesTF.TextChanged += new System.EventHandler(this.blisshiveFetchMinutesTF_TextChanged);
+            this.blisshiveFetchMinutesTF.TextChanged += new System.EventHandler(this.BlisshiveFetchMinutesTF_TextChanged);
             // 
             // DayzLogParserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1155, 511);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.warningsLbl);
             this.Controls.Add(this.warningPanel);
             this.Controls.Add(this.logfilesTabControl);
@@ -238,6 +264,8 @@
             this.blisshiveTab.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +292,9 @@
         private System.Windows.Forms.Panel warningPanel;
         private System.Windows.Forms.Label warningsLbl;
         private IntTextBox blisshiveFetchMinutesTF;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripDownloadStatus;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripDownloadSpeed;
     }
 }
 

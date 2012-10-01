@@ -35,12 +35,26 @@
             this.optionsCancelBtn = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.optionsFTPRootFolderLbl = new System.Windows.Forms.Label();
+            this.optionsTabControl = new System.Windows.Forms.TabControl();
+            this.optionsFTPTab = new System.Windows.Forms.TabPage();
+            this.optionsBlisshiveTab = new System.Windows.Forms.TabPage();
+            this.optionsBlisshiveAddItemTF = new System.Windows.Forms.TextBox();
+            this.optionsBlisshiveAddItemBtn = new System.Windows.Forms.Button();
+            this.optionsBlisshiveAllItemsListView = new System.Windows.Forms.ListView();
+            this.optionsBlisshiveBlackListListView = new System.Windows.Forms.ListView();
+            this.optionsBlisshiveAllItemsLbl = new System.Windows.Forms.Label();
+            this.optionsBlisshiveBlacklistItemsLbl = new System.Windows.Forms.Label();
+            this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blackListNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.optionsTabControl.SuspendLayout();
+            this.optionsFTPTab.SuspendLayout();
+            this.optionsBlisshiveTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // optionsFTPIPLbl
             // 
             this.optionsFTPIPLbl.AutoSize = true;
-            this.optionsFTPIPLbl.Location = new System.Drawing.Point(13, 15);
+            this.optionsFTPIPLbl.Location = new System.Drawing.Point(7, 9);
             this.optionsFTPIPLbl.Name = "optionsFTPIPLbl";
             this.optionsFTPIPLbl.Size = new System.Drawing.Size(40, 13);
             this.optionsFTPIPLbl.TabIndex = 0;
@@ -49,7 +63,7 @@
             // optionsFTPPortLbl
             // 
             this.optionsFTPPortLbl.AutoSize = true;
-            this.optionsFTPPortLbl.Location = new System.Drawing.Point(12, 44);
+            this.optionsFTPPortLbl.Location = new System.Drawing.Point(6, 38);
             this.optionsFTPPortLbl.Name = "optionsFTPPortLbl";
             this.optionsFTPPortLbl.Size = new System.Drawing.Size(49, 13);
             this.optionsFTPPortLbl.TabIndex = 1;
@@ -57,14 +71,14 @@
             // 
             // optionsServerIPTF
             // 
-            this.optionsServerIPTF.Location = new System.Drawing.Point(167, 12);
+            this.optionsServerIPTF.Location = new System.Drawing.Point(161, 6);
             this.optionsServerIPTF.Name = "optionsServerIPTF";
             this.optionsServerIPTF.Size = new System.Drawing.Size(139, 20);
             this.optionsServerIPTF.TabIndex = 4;
             // 
             // optionsServerPortTF
             // 
-            this.optionsServerPortTF.Location = new System.Drawing.Point(167, 41);
+            this.optionsServerPortTF.Location = new System.Drawing.Point(161, 35);
             this.optionsServerPortTF.Name = "optionsServerPortTF";
             this.optionsServerPortTF.Size = new System.Drawing.Size(139, 20);
             this.optionsServerPortTF.TabIndex = 5;
@@ -72,7 +86,7 @@
             // optionsFTPUsernameLbl
             // 
             this.optionsFTPUsernameLbl.AutoSize = true;
-            this.optionsFTPUsernameLbl.Location = new System.Drawing.Point(13, 73);
+            this.optionsFTPUsernameLbl.Location = new System.Drawing.Point(7, 67);
             this.optionsFTPUsernameLbl.Name = "optionsFTPUsernameLbl";
             this.optionsFTPUsernameLbl.Size = new System.Drawing.Size(78, 13);
             this.optionsFTPUsernameLbl.TabIndex = 6;
@@ -81,7 +95,7 @@
             // optionsFTPPasswordLbl
             // 
             this.optionsFTPPasswordLbl.AutoSize = true;
-            this.optionsFTPPasswordLbl.Location = new System.Drawing.Point(13, 102);
+            this.optionsFTPPasswordLbl.Location = new System.Drawing.Point(7, 96);
             this.optionsFTPPasswordLbl.Name = "optionsFTPPasswordLbl";
             this.optionsFTPPasswordLbl.Size = new System.Drawing.Size(76, 13);
             this.optionsFTPPasswordLbl.TabIndex = 7;
@@ -89,14 +103,14 @@
             // 
             // optionsFTPUsernameTF
             // 
-            this.optionsFTPUsernameTF.Location = new System.Drawing.Point(167, 70);
+            this.optionsFTPUsernameTF.Location = new System.Drawing.Point(161, 64);
             this.optionsFTPUsernameTF.Name = "optionsFTPUsernameTF";
             this.optionsFTPUsernameTF.Size = new System.Drawing.Size(139, 20);
             this.optionsFTPUsernameTF.TabIndex = 8;
             // 
             // optionsFTPPasswordTF
             // 
-            this.optionsFTPPasswordTF.Location = new System.Drawing.Point(167, 99);
+            this.optionsFTPPasswordTF.Location = new System.Drawing.Point(161, 93);
             this.optionsFTPPasswordTF.Name = "optionsFTPPasswordTF";
             this.optionsFTPPasswordTF.PasswordChar = '*';
             this.optionsFTPPasswordTF.Size = new System.Drawing.Size(139, 20);
@@ -125,7 +139,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(167, 127);
+            this.textBox2.Location = new System.Drawing.Point(161, 121);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(139, 20);
             this.textBox2.TabIndex = 14;
@@ -133,11 +147,125 @@
             // optionsFTPRootFolderLbl
             // 
             this.optionsFTPRootFolderLbl.AutoSize = true;
-            this.optionsFTPRootFolderLbl.Location = new System.Drawing.Point(13, 130);
+            this.optionsFTPRootFolderLbl.Location = new System.Drawing.Point(7, 124);
             this.optionsFTPRootFolderLbl.Name = "optionsFTPRootFolderLbl";
             this.optionsFTPRootFolderLbl.Size = new System.Drawing.Size(85, 13);
             this.optionsFTPRootFolderLbl.TabIndex = 12;
             this.optionsFTPRootFolderLbl.Text = "FTP Root Folder";
+            // 
+            // optionsTabControl
+            // 
+            this.optionsTabControl.Controls.Add(this.optionsFTPTab);
+            this.optionsTabControl.Controls.Add(this.optionsBlisshiveTab);
+            this.optionsTabControl.Location = new System.Drawing.Point(1, 0);
+            this.optionsTabControl.Name = "optionsTabControl";
+            this.optionsTabControl.SelectedIndex = 0;
+            this.optionsTabControl.Size = new System.Drawing.Size(314, 212);
+            this.optionsTabControl.TabIndex = 15;
+            // 
+            // optionsFTPTab
+            // 
+            this.optionsFTPTab.Controls.Add(this.optionsServerIPTF);
+            this.optionsFTPTab.Controls.Add(this.textBox2);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPIPLbl);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPRootFolderLbl);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPPortLbl);
+            this.optionsFTPTab.Controls.Add(this.optionsServerPortTF);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPUsernameLbl);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPPasswordTF);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPPasswordLbl);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPUsernameTF);
+            this.optionsFTPTab.Location = new System.Drawing.Point(4, 22);
+            this.optionsFTPTab.Name = "optionsFTPTab";
+            this.optionsFTPTab.Padding = new System.Windows.Forms.Padding(3);
+            this.optionsFTPTab.Size = new System.Drawing.Size(306, 186);
+            this.optionsFTPTab.TabIndex = 0;
+            this.optionsFTPTab.Text = "FTP";
+            this.optionsFTPTab.UseVisualStyleBackColor = true;
+            this.optionsFTPTab.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // optionsBlisshiveTab
+            // 
+            this.optionsBlisshiveTab.Controls.Add(this.optionsBlisshiveBlacklistItemsLbl);
+            this.optionsBlisshiveTab.Controls.Add(this.optionsBlisshiveAllItemsLbl);
+            this.optionsBlisshiveTab.Controls.Add(this.optionsBlisshiveBlackListListView);
+            this.optionsBlisshiveTab.Controls.Add(this.optionsBlisshiveAllItemsListView);
+            this.optionsBlisshiveTab.Controls.Add(this.optionsBlisshiveAddItemBtn);
+            this.optionsBlisshiveTab.Controls.Add(this.optionsBlisshiveAddItemTF);
+            this.optionsBlisshiveTab.Location = new System.Drawing.Point(4, 22);
+            this.optionsBlisshiveTab.Name = "optionsBlisshiveTab";
+            this.optionsBlisshiveTab.Size = new System.Drawing.Size(306, 186);
+            this.optionsBlisshiveTab.TabIndex = 1;
+            this.optionsBlisshiveTab.Text = "Blisshive";
+            this.optionsBlisshiveTab.UseVisualStyleBackColor = true;
+            // 
+            // optionsBlisshiveAddItemTF
+            // 
+            this.optionsBlisshiveAddItemTF.Location = new System.Drawing.Point(8, 4);
+            this.optionsBlisshiveAddItemTF.Name = "optionsBlisshiveAddItemTF";
+            this.optionsBlisshiveAddItemTF.Size = new System.Drawing.Size(212, 20);
+            this.optionsBlisshiveAddItemTF.TabIndex = 1;
+            // 
+            // optionsBlisshiveAddItemBtn
+            // 
+            this.optionsBlisshiveAddItemBtn.Location = new System.Drawing.Point(226, 2);
+            this.optionsBlisshiveAddItemBtn.Name = "optionsBlisshiveAddItemBtn";
+            this.optionsBlisshiveAddItemBtn.Size = new System.Drawing.Size(75, 23);
+            this.optionsBlisshiveAddItemBtn.TabIndex = 2;
+            this.optionsBlisshiveAddItemBtn.Text = "Add Item";
+            this.optionsBlisshiveAddItemBtn.UseVisualStyleBackColor = true;
+            this.optionsBlisshiveAddItemBtn.Click += new System.EventHandler(this.optionsBlisshiveAddItemBtn_Click);
+            // 
+            // optionsBlisshiveAllItemsListView
+            // 
+            this.optionsBlisshiveAllItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.nameHeader});
+            this.optionsBlisshiveAllItemsListView.HideSelection = false;
+            this.optionsBlisshiveAllItemsListView.Location = new System.Drawing.Point(8, 50);
+            this.optionsBlisshiveAllItemsListView.Name = "optionsBlisshiveAllItemsListView";
+            this.optionsBlisshiveAllItemsListView.Size = new System.Drawing.Size(141, 133);
+            this.optionsBlisshiveAllItemsListView.TabIndex = 3;
+            this.optionsBlisshiveAllItemsListView.UseCompatibleStateImageBehavior = false;
+            this.optionsBlisshiveAllItemsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // optionsBlisshiveBlackListListView
+            // 
+            this.optionsBlisshiveBlackListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.blackListNameHeader});
+            this.optionsBlisshiveBlackListListView.Location = new System.Drawing.Point(155, 50);
+            this.optionsBlisshiveBlackListListView.Name = "optionsBlisshiveBlackListListView";
+            this.optionsBlisshiveBlackListListView.Size = new System.Drawing.Size(148, 133);
+            this.optionsBlisshiveBlackListListView.TabIndex = 4;
+            this.optionsBlisshiveBlackListListView.UseCompatibleStateImageBehavior = false;
+            this.optionsBlisshiveBlackListListView.View = System.Windows.Forms.View.Details;
+            // 
+            // optionsBlisshiveAllItemsLbl
+            // 
+            this.optionsBlisshiveAllItemsLbl.AutoSize = true;
+            this.optionsBlisshiveAllItemsLbl.Location = new System.Drawing.Point(11, 31);
+            this.optionsBlisshiveAllItemsLbl.Name = "optionsBlisshiveAllItemsLbl";
+            this.optionsBlisshiveAllItemsLbl.Size = new System.Drawing.Size(46, 13);
+            this.optionsBlisshiveAllItemsLbl.TabIndex = 5;
+            this.optionsBlisshiveAllItemsLbl.Text = "All Items";
+            // 
+            // optionsBlisshiveBlacklistItemsLbl
+            // 
+            this.optionsBlisshiveBlacklistItemsLbl.AutoSize = true;
+            this.optionsBlisshiveBlacklistItemsLbl.Location = new System.Drawing.Point(156, 31);
+            this.optionsBlisshiveBlacklistItemsLbl.Name = "optionsBlisshiveBlacklistItemsLbl";
+            this.optionsBlisshiveBlacklistItemsLbl.Size = new System.Drawing.Size(86, 13);
+            this.optionsBlisshiveBlacklistItemsLbl.TabIndex = 6;
+            this.optionsBlisshiveBlacklistItemsLbl.Text = "Blacklisted Items";
+            // 
+            // nameHeader
+            // 
+            this.nameHeader.Text = "Name";
+            this.nameHeader.Width = 137;
+            // 
+            // blackListNameHeader
+            // 
+            this.blackListNameHeader.Text = "Name";
+            this.blackListNameHeader.Width = 143;
             // 
             // OptionsForm
             // 
@@ -145,25 +273,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 252);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.optionsFTPRootFolderLbl);
+            this.Controls.Add(this.optionsTabControl);
             this.Controls.Add(this.optionsCancelBtn);
             this.Controls.Add(this.optionsSaveBtn);
-            this.Controls.Add(this.optionsFTPPasswordTF);
-            this.Controls.Add(this.optionsFTPUsernameTF);
-            this.Controls.Add(this.optionsFTPPasswordLbl);
-            this.Controls.Add(this.optionsFTPUsernameLbl);
-            this.Controls.Add(this.optionsServerPortTF);
-            this.Controls.Add(this.optionsServerIPTF);
-            this.Controls.Add(this.optionsFTPPortLbl);
-            this.Controls.Add(this.optionsFTPIPLbl);
             this.MaximumSize = new System.Drawing.Size(334, 290);
             this.MinimumSize = new System.Drawing.Size(334, 290);
             this.Name = "OptionsForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Options";
+            this.optionsTabControl.ResumeLayout(false);
+            this.optionsFTPTab.ResumeLayout(false);
+            this.optionsFTPTab.PerformLayout();
+            this.optionsBlisshiveTab.ResumeLayout(false);
+            this.optionsBlisshiveTab.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -181,5 +304,16 @@
         private System.Windows.Forms.Button optionsCancelBtn;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label optionsFTPRootFolderLbl;
+        private System.Windows.Forms.TabControl optionsTabControl;
+        private System.Windows.Forms.TabPage optionsFTPTab;
+        private System.Windows.Forms.TabPage optionsBlisshiveTab;
+        private System.Windows.Forms.Label optionsBlisshiveBlacklistItemsLbl;
+        private System.Windows.Forms.Label optionsBlisshiveAllItemsLbl;
+        private System.Windows.Forms.ListView optionsBlisshiveBlackListListView;
+        private System.Windows.Forms.ListView optionsBlisshiveAllItemsListView;
+        private System.Windows.Forms.Button optionsBlisshiveAddItemBtn;
+        private System.Windows.Forms.TextBox optionsBlisshiveAddItemTF;
+        private System.Windows.Forms.ColumnHeader nameHeader;
+        private System.Windows.Forms.ColumnHeader blackListNameHeader;
     }
 }
