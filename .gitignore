@@ -1,0 +1,27 @@
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.cache
+*.dll
+*.tlog
+*.exe
+*.sln
+*.suo
+*.manifest
+*.pdb
+*.txt
+*.ppk
+*.key
+*.pub
+*.resources
+*.settings
+*.db
+*.csproj
+*.user
+*.contentproj
+*.xnb
+*.application
+*.cachefile
+*.pfx
+*.cd
+*Debug*
