@@ -273,29 +273,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel blisshivePlayerTimelinePanel;
-        private System.Windows.Forms.TreeView blisshivePlayerTree;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.MainMenu mainMenu;
-        private System.Windows.Forms.MenuItem fileMenuItem;
-        private System.Windows.Forms.MenuItem exitMenuItem;
-        private System.Windows.Forms.Button blisshiveDownloadLogBtn;
-        private System.Windows.Forms.TabControl logfilesTabControl;
-        private System.Windows.Forms.TabPage blisshiveTab;
-        private System.Windows.Forms.ComboBox blisshiveLogFetchTimeDropdown;
-        private System.Windows.Forms.ProgressBar blisshiveDownloadProgressBar;
-        private System.Windows.Forms.Label blisshiveFetchLogLbl;
-        private System.Windows.Forms.MenuItem optionsMenuItem;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label blisshiveRawLogLbl;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel warningPanel;
-        private System.Windows.Forms.Label warningsLbl;
-        // private IntTextBox blisshiveFetchMinutesTF;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripDownloadStatus;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripDownloadSpeed;
-        private IntTextBox blisshiveFetchMinutesTF;
+        public System.Windows.Forms.Panel blisshivePlayerTimelinePanel;
+        public System.Windows.Forms.TreeView blisshivePlayerTree;
+        public System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        public System.Windows.Forms.MainMenu mainMenu;
+        public System.Windows.Forms.MenuItem fileMenuItem;
+        public System.Windows.Forms.MenuItem exitMenuItem;
+        public System.Windows.Forms.Button blisshiveDownloadLogBtn;
+        public System.Windows.Forms.TabControl logfilesTabControl;
+        public System.Windows.Forms.TabPage blisshiveTab;
+        public System.Windows.Forms.ComboBox blisshiveLogFetchTimeDropdown;
+        public System.Windows.Forms.ProgressBar blisshiveDownloadProgressBar;
+        public System.Windows.Forms.Label blisshiveFetchLogLbl;
+        public System.Windows.Forms.MenuItem optionsMenuItem;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Label blisshiveRawLogLbl;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Panel warningPanel;
+        public System.Windows.Forms.Label warningsLbl;
+        // public IntTextBox blisshiveFetchMinutesTF;
+        public System.Windows.Forms.StatusStrip statusStrip;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripDownloadStatus;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripDownloadSpeed;
+        public IntTextBox blisshiveFetchMinutesTF;
     }
 }
 

@@ -10,6 +10,7 @@ namespace DayzLogParser.FTP {
     public delegate void ProgressUpdated(long current, long length, double speed);
     public delegate void DownloadStopped();
     public delegate void DownloadFinished(String filePath);
+    public delegate void DownloadFailed(int code, String reason);
 
     public class FTPDownloader {
         public String ip { get; private set; }
@@ -17,6 +18,7 @@ namespace DayzLogParser.FTP {
         public ProgressUpdated progressUpdatedListeners { get; set; }
         public DownloadStopped downloadStoppedListeners { get; set; }
         public DownloadFinished downloadFinishedListeners { get; set; }
+        public DownloadFailed downloadFailedListeners { get; set; }
 
 
         public long currentProgress { get; set; }
@@ -56,6 +58,11 @@ namespace DayzLogParser.FTP {
         /// <param name="filePath">The filepath (including filename!) leading to what file to download.</param>
         public virtual void StartDownload(String filePath) {
             this.length = this.GetFileSize(filePath);
+
+            if (this.length == 0) {
+                this.downloadFailedListeners(2, "Unable to fetch filesize. Check FTP settings.");
+                return;
+            }
 
             // Get the object used to communicate with the server.
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.ip + filePath);
@@ -140,21 +147,27 @@ namespace DayzLogParser.FTP {
         /// Gets the file size of a file.
         /// </summary>
         /// <param name="filePath">The path to the file.</param>
-        /// <returns>The file size in bytes.</returns>
+        /// <returns>The file size in bytes. If 0, no file was found.</returns>
         public long GetFileSize(String filePath) {
-            FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(this.ip + filePath);
+            try {
+                FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(this.ip + filePath);
 
-            sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
-            sizeRequest.Credentials = this.credentials;
+                sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
+                sizeRequest.Credentials = this.credentials;
 
-            FtpWebResponse loginresponse = (FtpWebResponse)sizeRequest.GetResponse();
-            FtpWebResponse respSize = (FtpWebResponse)sizeRequest.GetResponse();
-            respSize = (FtpWebResponse)sizeRequest.GetResponse();
-            long size = respSize.ContentLength;
+                FtpWebResponse loginresponse = (FtpWebResponse)sizeRequest.GetResponse();
+                FtpWebResponse respSize = (FtpWebResponse)sizeRequest.GetResponse();
+                respSize = (FtpWebResponse)sizeRequest.GetResponse();
+                long size = respSize.ContentLength;
 
-            respSize.Close();
+                respSize.Close();
 
-            return size;
+                return size;
+            } catch (WebException e) {
+                this.downloadFailedListeners(1, e.Message);
+            }
+            
+            return 0;
         }
     }
 }
