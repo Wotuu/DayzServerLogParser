@@ -12,8 +12,8 @@ namespace DayzLogParser.FTP {
             BlissHive = 0
         };
         
-        public LogFileDownloader(LogFile logfile) :
-            base("ftp://94.242.227.182:8821/", new NetworkCredential("Wotuu", "WotuuACP")) {
+        public LogFileDownloader(String IP, String Port, NetworkCredential credentials, String rootFolder, LogFile logfile) :
+            base("ftp://" + IP + ":" + Port + "/", credentials) {
 
                 this.logFile = logfile;
 
@@ -25,7 +25,7 @@ namespace DayzLogParser.FTP {
                     default:
                         throw new Exception("Invalid Logfile.");
                 }
-                this.StartDownload("94.242.227.182_2362/" + logFileName);
+                this.StartDownload(rootFolder + "/" + logFileName);
         }
     }
 }

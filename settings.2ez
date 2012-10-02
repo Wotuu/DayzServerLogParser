@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <BlissHive>
+    <ItemsList />
+    <BlackListItems />
+  </BlissHive>
+  <FTP>
+    <IP>94.242.227.182</IP>
+    <Port>8821</Port>
+    <Username>Wotuu</Username>
+    <Password>WotuuACP</Password>
+    <RootFolder>94.242.227.182_2362</RootFolder>
+  </FTP>
+</Settings>

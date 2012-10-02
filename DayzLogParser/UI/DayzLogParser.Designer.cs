@@ -36,18 +36,18 @@
             this.blisshiveDownloadLogBtn = new System.Windows.Forms.Button();
             this.logfilesTabControl = new System.Windows.Forms.TabControl();
             this.blisshiveTab = new System.Windows.Forms.TabPage();
+            this.blisshiveFetchMinutesTF = new DayzLogParser.UI.IntTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.blisshiveRawLogLbl = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.blisshiveLogFetchTimeDropdown = new System.Windows.Forms.ComboBox();
             this.blisshiveDownloadProgressBar = new System.Windows.Forms.ProgressBar();
+            this.blisshiveLogFetchTimeDropdown = new System.Windows.Forms.ComboBox();
             this.blisshiveFetchLogLbl = new System.Windows.Forms.Label();
             this.warningPanel = new System.Windows.Forms.Panel();
             this.warningsLbl = new System.Windows.Forms.Label();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripDownloadStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
-            this.blisshiveFetchMinutesTF = new DayzLogParser.UI.IntTextBox();
             this.logfilesTabControl.SuspendLayout();
             this.blisshiveTab.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -129,10 +129,10 @@
             // 
             // blisshiveTab
             // 
+            this.blisshiveTab.Controls.Add(this.blisshiveFetchMinutesTF);
             this.blisshiveTab.Controls.Add(this.panel1);
             this.blisshiveTab.Controls.Add(this.blisshiveDownloadProgressBar);
             this.blisshiveTab.Controls.Add(this.blisshiveLogFetchTimeDropdown);
-            this.blisshiveTab.Controls.Add(this.blisshiveFetchMinutesTF);
             this.blisshiveTab.Controls.Add(this.blisshiveFetchLogLbl);
             this.blisshiveTab.Controls.Add(this.blisshivePlayerTree);
             this.blisshiveTab.Controls.Add(this.blisshiveDownloadLogBtn);
@@ -144,6 +144,14 @@
             this.blisshiveTab.TabIndex = 0;
             this.blisshiveTab.Text = "blisshive.log";
             this.blisshiveTab.UseVisualStyleBackColor = true;
+            // 
+            // blisshiveFetchMinutesTF
+            // 
+            this.blisshiveFetchMinutesTF.Location = new System.Drawing.Point(93, 4);
+            this.blisshiveFetchMinutesTF.Name = "blisshiveFetchMinutesTF";
+            this.blisshiveFetchMinutesTF.Size = new System.Drawing.Size(42, 20);
+            this.blisshiveFetchMinutesTF.TabIndex = 8;
+            this.blisshiveFetchMinutesTF.TextChanged += new System.EventHandler(this.BlisshiveFetchMinutesTF_TextChanged);
             // 
             // panel1
             // 
@@ -172,6 +180,13 @@
             this.textBox1.Size = new System.Drawing.Size(689, 264);
             this.textBox1.TabIndex = 0;
             // 
+            // blisshiveDownloadProgressBar
+            // 
+            this.blisshiveDownloadProgressBar.Location = new System.Drawing.Point(313, 3);
+            this.blisshiveDownloadProgressBar.Name = "blisshiveDownloadProgressBar";
+            this.blisshiveDownloadProgressBar.Size = new System.Drawing.Size(608, 23);
+            this.blisshiveDownloadProgressBar.TabIndex = 5;
+            // 
             // blisshiveLogFetchTimeDropdown
             // 
             this.blisshiveLogFetchTimeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -183,13 +198,6 @@
             this.blisshiveLogFetchTimeDropdown.Name = "blisshiveLogFetchTimeDropdown";
             this.blisshiveLogFetchTimeDropdown.Size = new System.Drawing.Size(84, 21);
             this.blisshiveLogFetchTimeDropdown.TabIndex = 6;
-            // 
-            // blisshiveDownloadProgressBar
-            // 
-            this.blisshiveDownloadProgressBar.Location = new System.Drawing.Point(313, 3);
-            this.blisshiveDownloadProgressBar.Name = "blisshiveDownloadProgressBar";
-            this.blisshiveDownloadProgressBar.Size = new System.Drawing.Size(608, 23);
-            this.blisshiveDownloadProgressBar.TabIndex = 5;
             // 
             // blisshiveFetchLogLbl
             // 
@@ -237,14 +245,6 @@
             this.toolStripDownloadSpeed.Name = "toolStripDownloadSpeed";
             this.toolStripDownloadSpeed.Size = new System.Drawing.Size(0, 17);
             // 
-            // blisshiveFetchMinutesTF
-            // 
-            this.blisshiveFetchMinutesTF.Location = new System.Drawing.Point(93, 4);
-            this.blisshiveFetchMinutesTF.Name = "blisshiveFetchMinutesTF";
-            this.blisshiveFetchMinutesTF.Size = new System.Drawing.Size(41, 20);
-            this.blisshiveFetchMinutesTF.TabIndex = 4;
-            this.blisshiveFetchMinutesTF.TextChanged += new System.EventHandler(this.BlisshiveFetchMinutesTF_TextChanged);
-            // 
             // DayzLogParserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,10 +291,11 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel warningPanel;
         private System.Windows.Forms.Label warningsLbl;
-        private IntTextBox blisshiveFetchMinutesTF;
+        // private IntTextBox blisshiveFetchMinutesTF;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripDownloadStatus;
         private System.Windows.Forms.ToolStripStatusLabel toolStripDownloadSpeed;
+        private IntTextBox blisshiveFetchMinutesTF;
     }
 }
 

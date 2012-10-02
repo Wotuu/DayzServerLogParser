@@ -25,27 +25,27 @@
         private void InitializeComponent() {
             this.optionsFTPIPLbl = new System.Windows.Forms.Label();
             this.optionsFTPPortLbl = new System.Windows.Forms.Label();
-            this.optionsServerIPTF = new System.Windows.Forms.TextBox();
-            this.optionsServerPortTF = new System.Windows.Forms.TextBox();
+            this.optionsFTPIPTF = new System.Windows.Forms.TextBox();
+            this.optionsFTPPortTF = new System.Windows.Forms.TextBox();
             this.optionsFTPUsernameLbl = new System.Windows.Forms.Label();
             this.optionsFTPPasswordLbl = new System.Windows.Forms.Label();
             this.optionsFTPUsernameTF = new System.Windows.Forms.TextBox();
             this.optionsFTPPasswordTF = new System.Windows.Forms.TextBox();
             this.optionsSaveBtn = new System.Windows.Forms.Button();
             this.optionsCancelBtn = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.optionsFTPRootFolderTF = new System.Windows.Forms.TextBox();
             this.optionsFTPRootFolderLbl = new System.Windows.Forms.Label();
             this.optionsTabControl = new System.Windows.Forms.TabControl();
             this.optionsFTPTab = new System.Windows.Forms.TabPage();
             this.optionsBlisshiveTab = new System.Windows.Forms.TabPage();
-            this.optionsBlisshiveAddItemTF = new System.Windows.Forms.TextBox();
-            this.optionsBlisshiveAddItemBtn = new System.Windows.Forms.Button();
-            this.optionsBlisshiveAllItemsListView = new System.Windows.Forms.ListView();
-            this.optionsBlisshiveBlackListListView = new System.Windows.Forms.ListView();
-            this.optionsBlisshiveAllItemsLbl = new System.Windows.Forms.Label();
             this.optionsBlisshiveBlacklistItemsLbl = new System.Windows.Forms.Label();
-            this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.optionsBlisshiveAllItemsLbl = new System.Windows.Forms.Label();
+            this.optionsBlisshiveBlackListListView = new System.Windows.Forms.ListView();
             this.blackListNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.optionsBlisshiveAllItemsListView = new System.Windows.Forms.ListView();
+            this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.optionsBlisshiveAddItemBtn = new System.Windows.Forms.Button();
+            this.optionsBlisshiveAddItemTF = new System.Windows.Forms.TextBox();
             this.optionsTabControl.SuspendLayout();
             this.optionsFTPTab.SuspendLayout();
             this.optionsBlisshiveTab.SuspendLayout();
@@ -69,19 +69,19 @@
             this.optionsFTPPortLbl.TabIndex = 1;
             this.optionsFTPPortLbl.Text = "FTP Port";
             // 
-            // optionsServerIPTF
+            // optionsFTPIPTF
             // 
-            this.optionsServerIPTF.Location = new System.Drawing.Point(161, 6);
-            this.optionsServerIPTF.Name = "optionsServerIPTF";
-            this.optionsServerIPTF.Size = new System.Drawing.Size(139, 20);
-            this.optionsServerIPTF.TabIndex = 4;
+            this.optionsFTPIPTF.Location = new System.Drawing.Point(161, 6);
+            this.optionsFTPIPTF.Name = "optionsFTPIPTF";
+            this.optionsFTPIPTF.Size = new System.Drawing.Size(139, 20);
+            this.optionsFTPIPTF.TabIndex = 4;
             // 
-            // optionsServerPortTF
+            // optionsFTPPortTF
             // 
-            this.optionsServerPortTF.Location = new System.Drawing.Point(161, 35);
-            this.optionsServerPortTF.Name = "optionsServerPortTF";
-            this.optionsServerPortTF.Size = new System.Drawing.Size(139, 20);
-            this.optionsServerPortTF.TabIndex = 5;
+            this.optionsFTPPortTF.Location = new System.Drawing.Point(161, 35);
+            this.optionsFTPPortTF.Name = "optionsFTPPortTF";
+            this.optionsFTPPortTF.Size = new System.Drawing.Size(139, 20);
+            this.optionsFTPPortTF.TabIndex = 5;
             // 
             // optionsFTPUsernameLbl
             // 
@@ -137,12 +137,12 @@
             this.optionsCancelBtn.UseVisualStyleBackColor = true;
             this.optionsCancelBtn.Click += new System.EventHandler(this.optionsCancelBtn_Click);
             // 
-            // textBox2
+            // optionsFTPRootFolderTF
             // 
-            this.textBox2.Location = new System.Drawing.Point(161, 121);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(139, 20);
-            this.textBox2.TabIndex = 14;
+            this.optionsFTPRootFolderTF.Location = new System.Drawing.Point(161, 121);
+            this.optionsFTPRootFolderTF.Name = "optionsFTPRootFolderTF";
+            this.optionsFTPRootFolderTF.Size = new System.Drawing.Size(139, 20);
+            this.optionsFTPRootFolderTF.TabIndex = 14;
             // 
             // optionsFTPRootFolderLbl
             // 
@@ -165,12 +165,12 @@
             // 
             // optionsFTPTab
             // 
-            this.optionsFTPTab.Controls.Add(this.optionsServerIPTF);
-            this.optionsFTPTab.Controls.Add(this.textBox2);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPIPTF);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPRootFolderTF);
             this.optionsFTPTab.Controls.Add(this.optionsFTPIPLbl);
             this.optionsFTPTab.Controls.Add(this.optionsFTPRootFolderLbl);
             this.optionsFTPTab.Controls.Add(this.optionsFTPPortLbl);
-            this.optionsFTPTab.Controls.Add(this.optionsServerPortTF);
+            this.optionsFTPTab.Controls.Add(this.optionsFTPPortTF);
             this.optionsFTPTab.Controls.Add(this.optionsFTPUsernameLbl);
             this.optionsFTPTab.Controls.Add(this.optionsFTPPasswordTF);
             this.optionsFTPTab.Controls.Add(this.optionsFTPPasswordLbl);
@@ -199,22 +199,39 @@
             this.optionsBlisshiveTab.Text = "Blisshive";
             this.optionsBlisshiveTab.UseVisualStyleBackColor = true;
             // 
-            // optionsBlisshiveAddItemTF
+            // optionsBlisshiveBlacklistItemsLbl
             // 
-            this.optionsBlisshiveAddItemTF.Location = new System.Drawing.Point(8, 4);
-            this.optionsBlisshiveAddItemTF.Name = "optionsBlisshiveAddItemTF";
-            this.optionsBlisshiveAddItemTF.Size = new System.Drawing.Size(212, 20);
-            this.optionsBlisshiveAddItemTF.TabIndex = 1;
+            this.optionsBlisshiveBlacklistItemsLbl.AutoSize = true;
+            this.optionsBlisshiveBlacklistItemsLbl.Location = new System.Drawing.Point(156, 31);
+            this.optionsBlisshiveBlacklistItemsLbl.Name = "optionsBlisshiveBlacklistItemsLbl";
+            this.optionsBlisshiveBlacklistItemsLbl.Size = new System.Drawing.Size(86, 13);
+            this.optionsBlisshiveBlacklistItemsLbl.TabIndex = 6;
+            this.optionsBlisshiveBlacklistItemsLbl.Text = "Blacklisted Items";
             // 
-            // optionsBlisshiveAddItemBtn
+            // optionsBlisshiveAllItemsLbl
             // 
-            this.optionsBlisshiveAddItemBtn.Location = new System.Drawing.Point(226, 2);
-            this.optionsBlisshiveAddItemBtn.Name = "optionsBlisshiveAddItemBtn";
-            this.optionsBlisshiveAddItemBtn.Size = new System.Drawing.Size(75, 23);
-            this.optionsBlisshiveAddItemBtn.TabIndex = 2;
-            this.optionsBlisshiveAddItemBtn.Text = "Add Item";
-            this.optionsBlisshiveAddItemBtn.UseVisualStyleBackColor = true;
-            this.optionsBlisshiveAddItemBtn.Click += new System.EventHandler(this.optionsBlisshiveAddItemBtn_Click);
+            this.optionsBlisshiveAllItemsLbl.AutoSize = true;
+            this.optionsBlisshiveAllItemsLbl.Location = new System.Drawing.Point(11, 31);
+            this.optionsBlisshiveAllItemsLbl.Name = "optionsBlisshiveAllItemsLbl";
+            this.optionsBlisshiveAllItemsLbl.Size = new System.Drawing.Size(46, 13);
+            this.optionsBlisshiveAllItemsLbl.TabIndex = 5;
+            this.optionsBlisshiveAllItemsLbl.Text = "All Items";
+            // 
+            // optionsBlisshiveBlackListListView
+            // 
+            this.optionsBlisshiveBlackListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.blackListNameHeader});
+            this.optionsBlisshiveBlackListListView.Location = new System.Drawing.Point(155, 50);
+            this.optionsBlisshiveBlackListListView.Name = "optionsBlisshiveBlackListListView";
+            this.optionsBlisshiveBlackListListView.Size = new System.Drawing.Size(148, 133);
+            this.optionsBlisshiveBlackListListView.TabIndex = 4;
+            this.optionsBlisshiveBlackListListView.UseCompatibleStateImageBehavior = false;
+            this.optionsBlisshiveBlackListListView.View = System.Windows.Forms.View.Details;
+            // 
+            // blackListNameHeader
+            // 
+            this.blackListNameHeader.Text = "Name";
+            this.blackListNameHeader.Width = 143;
             // 
             // optionsBlisshiveAllItemsListView
             // 
@@ -228,44 +245,27 @@
             this.optionsBlisshiveAllItemsListView.UseCompatibleStateImageBehavior = false;
             this.optionsBlisshiveAllItemsListView.View = System.Windows.Forms.View.Details;
             // 
-            // optionsBlisshiveBlackListListView
-            // 
-            this.optionsBlisshiveBlackListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.blackListNameHeader});
-            this.optionsBlisshiveBlackListListView.Location = new System.Drawing.Point(155, 50);
-            this.optionsBlisshiveBlackListListView.Name = "optionsBlisshiveBlackListListView";
-            this.optionsBlisshiveBlackListListView.Size = new System.Drawing.Size(148, 133);
-            this.optionsBlisshiveBlackListListView.TabIndex = 4;
-            this.optionsBlisshiveBlackListListView.UseCompatibleStateImageBehavior = false;
-            this.optionsBlisshiveBlackListListView.View = System.Windows.Forms.View.Details;
-            // 
-            // optionsBlisshiveAllItemsLbl
-            // 
-            this.optionsBlisshiveAllItemsLbl.AutoSize = true;
-            this.optionsBlisshiveAllItemsLbl.Location = new System.Drawing.Point(11, 31);
-            this.optionsBlisshiveAllItemsLbl.Name = "optionsBlisshiveAllItemsLbl";
-            this.optionsBlisshiveAllItemsLbl.Size = new System.Drawing.Size(46, 13);
-            this.optionsBlisshiveAllItemsLbl.TabIndex = 5;
-            this.optionsBlisshiveAllItemsLbl.Text = "All Items";
-            // 
-            // optionsBlisshiveBlacklistItemsLbl
-            // 
-            this.optionsBlisshiveBlacklistItemsLbl.AutoSize = true;
-            this.optionsBlisshiveBlacklistItemsLbl.Location = new System.Drawing.Point(156, 31);
-            this.optionsBlisshiveBlacklistItemsLbl.Name = "optionsBlisshiveBlacklistItemsLbl";
-            this.optionsBlisshiveBlacklistItemsLbl.Size = new System.Drawing.Size(86, 13);
-            this.optionsBlisshiveBlacklistItemsLbl.TabIndex = 6;
-            this.optionsBlisshiveBlacklistItemsLbl.Text = "Blacklisted Items";
-            // 
             // nameHeader
             // 
             this.nameHeader.Text = "Name";
             this.nameHeader.Width = 137;
             // 
-            // blackListNameHeader
+            // optionsBlisshiveAddItemBtn
             // 
-            this.blackListNameHeader.Text = "Name";
-            this.blackListNameHeader.Width = 143;
+            this.optionsBlisshiveAddItemBtn.Location = new System.Drawing.Point(226, 2);
+            this.optionsBlisshiveAddItemBtn.Name = "optionsBlisshiveAddItemBtn";
+            this.optionsBlisshiveAddItemBtn.Size = new System.Drawing.Size(75, 23);
+            this.optionsBlisshiveAddItemBtn.TabIndex = 2;
+            this.optionsBlisshiveAddItemBtn.Text = "Add Item";
+            this.optionsBlisshiveAddItemBtn.UseVisualStyleBackColor = true;
+            this.optionsBlisshiveAddItemBtn.Click += new System.EventHandler(this.optionsBlisshiveAddItemBtn_Click);
+            // 
+            // optionsBlisshiveAddItemTF
+            // 
+            this.optionsBlisshiveAddItemTF.Location = new System.Drawing.Point(8, 4);
+            this.optionsBlisshiveAddItemTF.Name = "optionsBlisshiveAddItemTF";
+            this.optionsBlisshiveAddItemTF.Size = new System.Drawing.Size(212, 20);
+            this.optionsBlisshiveAddItemTF.TabIndex = 1;
             // 
             // OptionsForm
             // 
@@ -294,15 +294,15 @@
 
         private System.Windows.Forms.Label optionsFTPIPLbl;
         private System.Windows.Forms.Label optionsFTPPortLbl;
-        private System.Windows.Forms.TextBox optionsServerIPTF;
-        private System.Windows.Forms.TextBox optionsServerPortTF;
+        private System.Windows.Forms.TextBox optionsFTPIPTF;
+        private System.Windows.Forms.TextBox optionsFTPPortTF;
         private System.Windows.Forms.Label optionsFTPUsernameLbl;
         private System.Windows.Forms.Label optionsFTPPasswordLbl;
         private System.Windows.Forms.TextBox optionsFTPUsernameTF;
         private System.Windows.Forms.TextBox optionsFTPPasswordTF;
         private System.Windows.Forms.Button optionsSaveBtn;
         private System.Windows.Forms.Button optionsCancelBtn;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox optionsFTPRootFolderTF;
         private System.Windows.Forms.Label optionsFTPRootFolderLbl;
         private System.Windows.Forms.TabControl optionsTabControl;
         private System.Windows.Forms.TabPage optionsFTPTab;

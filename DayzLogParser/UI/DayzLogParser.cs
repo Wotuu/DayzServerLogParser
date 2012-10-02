@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using DayzLogParser.FTP;
 using DayzLogParser.Log.BlissHive;
 using DayzLogParser.Log;
+using DayzLogParser.Settings;
+using DayzLogParser.Settings.BlissHive;
+using System.Net;
 
 namespace DayzLogParser.UI {
     public partial class DayzLogParserForm : Form {
@@ -29,13 +32,60 @@ namespace DayzLogParser.UI {
 
         private void BlisshiveDownloadLogBtn_Click(object sender, EventArgs e) {
             if (this.blisshiveDownloadLogBtn.Text == "Start") {
-                FTPController.GetInstance().blissHiveDownloader = new LogFileDownloader(LogFileDownloader.LogFile.BlissHive);
-                FTPController.GetInstance().blissHiveDownloader.progressUpdatedListeners += this.BlisshiveDownloadProgress;
-                FTPController.GetInstance().blissHiveDownloader.downloadStoppedListeners += this.BlisshiveDownloadStopped;
-                FTPController.GetInstance().blissHiveDownloader.downloadFinishedListeners += this.BlisshiveDownloadFinished;
+                LinkedList<SettingsCategory> categories = 
+                    SettingsController.GetInstance().LoadSettingsFile(OptionsForm.SettingsFileLocation);
 
-                toolStripDownloadStatus.Text = "Downloading blisshive.log..";
-                this.blisshiveDownloadLogBtn.Text = "Stop";
+                Boolean foundSettings = false;
+                String IP = "";
+                String port = "";
+                String rootFolder = "";
+                NetworkCredential credential = null;// new NetworkCredential();
+                foreach (SettingsCategory category in categories) {
+                    if (category is FTPSettingsCategory) {
+                        FTPSettingsCategory ftpCategory = (FTPSettingsCategory)category;
+
+                        IP = ftpCategory.ip;
+                        port = ftpCategory.port;
+                        credential = new NetworkCredential(ftpCategory.username, ftpCategory.password);
+                        rootFolder = ftpCategory.rootFolder;
+
+                        foundSettings = true;
+                    }
+                }
+
+                if (foundSettings) {
+                    int errors = 0;
+                    if (IP.Length == 0) {
+                        MessageBox.Show("IP not set. See Options to set an IP.");
+                        errors++;
+                    }
+                    int portInt = 0;
+                    if (port.Length == 0 && !Int32.TryParse(port, out portInt)) {
+                        MessageBox.Show("Port not set or invalid. See Options to set a valid port.");
+                        errors++;
+                    }
+                    if (credential.UserName.Length == 0) {
+                        MessageBox.Show("Username not set. See Options to set a username.");
+                        errors++;
+                    }
+                    if (credential.Password.Length == 0) {
+                        MessageBox.Show("Password not set. See Options to set a password.");
+                        errors++;
+                    }
+
+                    if (errors == 0) {
+                        FTPController.GetInstance().blissHiveDownloader =
+                            new LogFileDownloader(IP, port, credential, rootFolder, LogFileDownloader.LogFile.BlissHive);
+                        FTPController.GetInstance().blissHiveDownloader.progressUpdatedListeners += this.BlisshiveDownloadProgress;
+                        FTPController.GetInstance().blissHiveDownloader.downloadStoppedListeners += this.BlisshiveDownloadStopped;
+                        FTPController.GetInstance().blissHiveDownloader.downloadFinishedListeners += this.BlisshiveDownloadFinished;
+
+                        toolStripDownloadStatus.Text = "Downloading blisshive.log..";
+                        this.blisshiveDownloadLogBtn.Text = "Stop";
+                    }
+                } else {
+                    MessageBox.Show("No FTP Settings found. Please add them in the Options menu.");
+                }
             } else if (this.blisshiveDownloadLogBtn.Text == "Stop") {
                 FTPController.GetInstance().blissHiveDownloader.StopDownload();
             }
