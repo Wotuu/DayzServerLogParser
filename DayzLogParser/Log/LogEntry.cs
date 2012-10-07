@@ -7,6 +7,7 @@ namespace DayzLogParser.Log {
     public abstract class LogEntry {
         public String original { get; protected set; }
 
+        public double timestampUnix { get; protected set; }
         public String timestamp { get; protected set; }
         public String logType { get; protected set; }
         public String map { get; protected set; }
@@ -14,7 +15,7 @@ namespace DayzLogParser.Log {
 
         public String message { get; protected set; }
         public String functionName { get; protected set; }
-        public String parameters { get; protected set; }
+        public String[] parameters { get; protected set; }
 
         public LogEntry(String entry) {
             this.original = entry;

@@ -39,7 +39,7 @@ namespace DayzLogParser.Settings.BlissHive {
                 // Create item name xml attribute
                 XmlAttribute itemNodeName = document.CreateAttribute("name");
                 // Set the value of the attribute
-                itemNodeName.Value = item;
+                itemNodeName.Value = item.Trim();
                 // Append the attribute to the attributes
                 itemNode.Attributes.SetNamedItem(itemNodeName);
                 // Append the item to the item list
@@ -59,12 +59,12 @@ namespace DayzLogParser.Settings.BlissHive {
         public override void Load(XmlNode toLoad) {
             XmlNode itemsListNode = toLoad.ChildNodes[0];
             foreach (XmlNode item in itemsListNode.ChildNodes) {
-                this.itemsList.AddLast(item.Attributes.GetNamedItem("name").Value);
+                this.itemsList.AddLast(item.Attributes.GetNamedItem("name").Value.Trim());
             }
 
             XmlNode blackListNode = toLoad.ChildNodes[1];
             foreach (XmlNode item in blackListNode.ChildNodes) {
-                this.blackListItems.AddLast(item.Attributes.GetNamedItem("name").Value);
+                this.blackListItems.AddLast(item.Attributes.GetNamedItem("name").Value.Trim());
             }
         }
 

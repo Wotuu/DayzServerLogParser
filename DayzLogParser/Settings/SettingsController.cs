@@ -32,7 +32,7 @@ namespace DayzLogParser.Settings {
                 XmlNode declaration = xmldoc.FirstChild;
 
                 XmlNode rootNode = xmldoc.ChildNodes[1];
-
+                
                 for (int i = 0; i < rootNode.ChildNodes.Count; i++) {
                     XmlNode node = rootNode.ChildNodes[i];
                     String nodeName = node.Name;

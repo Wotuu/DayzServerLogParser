@@ -9,11 +9,15 @@ namespace DayzLogParser.Log {
 
         private static LogController instance { get; set; }
 
-        public BlissHiveLogContainer blissHiveLogParser { get; set; }
+        public BlissHiveLogContainer blissHiveLogContainer { get; set; }
 
         public static LogController GetInstance() {
             if (LogController.instance == null) LogController.instance = new LogController();
             return instance;
+        }
+
+        private LogController() {
+
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DayzLogParser.FTP;
 using DayzLogParser.Log.BlissHive;
 using DayzLogParser.Log;
+using System.ComponentModel;
 
 namespace DayzLogParser.UI.BlissHive {
     public class BlissHiveDownloadHandler : LogDownloadHandler {
@@ -69,8 +70,9 @@ namespace DayzLogParser.UI.BlissHive {
                     FTPController.GetInstance().blissHiveDownloader.downloadFinishedListeners += this.FinishedDownload;
                     FTPController.GetInstance().blissHiveDownloader.downloadFailedListeners += this.FailedDownload;
 
-                    this.dayzLogParserForm.toolStripDownloadStatus.Text = "Downloading blisshive.log..";
-                    this.dayzLogParserForm.blisshiveDownloadLogBtn.Text = "Stop";
+                    this.dayzLogParserForm.SetStatusText(0, "Downloading blisshive.log..");
+                    this.dayzLogParserForm.SetStatusText(1, "");
+                    this.dayzLogParserForm.blissHiveDownloadLogBtn.Text = "Stop";
                     /*} catch(WebException e){
 
                     }*/
@@ -85,39 +87,16 @@ namespace DayzLogParser.UI.BlissHive {
         /// <summary>
         /// Clears the progressbar, and invokes if needed.
         /// </summary>
-        private void ClearProgressBar() {
-            if (this.dayzLogParserForm.blisshiveDownloadProgressBar.InvokeRequired) {
+        public void ClearProgressBar() {
+            if (this.dayzLogParserForm.blissHiveDownloadProgressBar.InvokeRequired) {
                 this.dayzLogParserForm.BeginInvoke(new MethodInvoker(delegate() { ClearProgressBar(); }));
             } else {
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Minimum = 0;
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Maximum = 1;
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Value = 0;
-                this.dayzLogParserForm.toolStripDownloadStatus.Text = "";
-                this.dayzLogParserForm.toolStripDownloadSpeed.Text = "";
+                this.dayzLogParserForm.blissHiveDownloadProgressBar.Minimum = 0;
+                this.dayzLogParserForm.blissHiveDownloadProgressBar.Maximum = 1;
+                this.dayzLogParserForm.blissHiveDownloadProgressBar.Value = 0;
+                this.dayzLogParserForm.SetStatusText(0, "");
+                this.dayzLogParserForm.SetStatusText(1, "");
             }
-        }
-
-        /// <summary>
-        /// Starts the log parse, with given filePath, and invokes if needed.
-        /// </summary>
-        /// <param name="filePath">The filepath of the file</param>
-        private void StartLogParse(String filePath) {
-
-            BlissHiveLogContainer blissHiveLogParser = new BlissHiveLogContainer();
-            int maximum = blissHiveLogParser.GetLogCount(filePath);
-            if (this.dayzLogParserForm.blisshiveDownloadProgressBar.InvokeRequired) {
-                this.dayzLogParserForm.BeginInvoke(new MethodInvoker(delegate() { StartLogParse(filePath); }));
-            } else {
-                this.dayzLogParserForm.toolStripDownloadStatus.Text = "Parsing log file..";
-                this.dayzLogParserForm.toolStripDownloadSpeed.Text = "(This may take a while)";
-
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Minimum = 0;
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Maximum = maximum;
-            }
-
-            blissHiveLogParser.LoadLog(filePath);
-            blissHiveLogParser.ParseLog();
-            LogController.GetInstance().blissHiveLogParser = blissHiveLogParser;
         }
 
         /// <summary>
@@ -127,7 +106,7 @@ namespace DayzLogParser.UI.BlissHive {
         /// <param name="length">The maximum progress</param>
         public override void OnDownloadProgress(long current, long length, double speed) {
 
-            if (this.dayzLogParserForm.blisshiveDownloadProgressBar.InvokeRequired) {
+            if (this.dayzLogParserForm.blissHiveDownloadProgressBar.InvokeRequired) {
                 this.dayzLogParserForm.BeginInvoke(new MethodInvoker(delegate() { OnDownloadProgress(current, length, speed); }));
             } else {
                 String[] abbreviations = new String[] { "B/s", "KB/s", "MB/s", "GB/s", "TB/s", "PB/s" };
@@ -143,13 +122,14 @@ namespace DayzLogParser.UI.BlissHive {
                     }
                 }
 
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Minimum = 0;
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Maximum = (int)length;
+                this.dayzLogParserForm.blissHiveDownloadProgressBar.Minimum = 0;
+                this.dayzLogParserForm.blissHiveDownloadProgressBar.Maximum = (int)length;
                 // Just wait if the current is a bit larger than length
                 if (current > length)
                     current = length;
-                this.dayzLogParserForm.blisshiveDownloadProgressBar.Value = (int)current;
-                this.dayzLogParserForm.toolStripDownloadSpeed.Text = "DL: " + speedText;
+                this.dayzLogParserForm.blissHiveDownloadProgressBar.Value = (int)current;
+
+                this.dayzLogParserForm.SetStatusText(1, "DL: " + speedText);
             }
         }
 
@@ -157,11 +137,12 @@ namespace DayzLogParser.UI.BlissHive {
         /// Called when the download for the blisshive.log has finished.
         /// </summary>
         public override void FinishedDownload(String filePath) {
-            this.ClearProgressBar();
 
-            this.StartLogParse(filePath);
+            // Cleanup the status bar, progress bar etc
+            this.dayzLogParserForm.CleanupDownload();
 
-            this.Cleanup();
+            this.dayzLogParserForm.blissHiveParseHandler = new BlissHiveParseHandler(this.dayzLogParserForm);
+            this.dayzLogParserForm.blissHiveParseHandler.StartLogParse(filePath);
         }
 
         /// <summary>
@@ -177,7 +158,7 @@ namespace DayzLogParser.UI.BlissHive {
         }
 
         public override void CancelDownload() {
-            if (this.dayzLogParserForm.blisshiveDownloadProgressBar.InvokeRequired) {
+            if (this.dayzLogParserForm.blissHiveDownloadProgressBar.InvokeRequired) {
                 this.dayzLogParserForm.BeginInvoke(new MethodInvoker(delegate() { this.CancelDownload(); }));
 
             } else {
@@ -186,13 +167,7 @@ namespace DayzLogParser.UI.BlissHive {
         }
 
         public override void Cleanup() {
-            if (this.dayzLogParserForm.blisshiveDownloadProgressBar.InvokeRequired) {
-                this.dayzLogParserForm.BeginInvoke(new MethodInvoker(delegate() { this.Cleanup(); }));
-
-            } else {
-                this.ClearProgressBar();
-                this.dayzLogParserForm.blisshiveDownloadLogBtn.Text = "Start";
-            }
+            this.dayzLogParserForm.CleanupDownload();
         }
     }
 }
