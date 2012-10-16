@@ -37,6 +37,9 @@ namespace DayzLogParser.UI.BlissHive {
                 this.dayzLogParserForm.blissHiveDownloadLogBtn.Text = "Parsing..";
                 this.dayzLogParserForm.blissHiveDownloadLogBtn.Enabled = false;
 
+                this.dayzLogParserForm.blissHiveProgressTimeRemainingLbl.Text = "";
+                this.dayzLogParserForm.blissHivePlayerName.Text = "Parsing log file..";
+
                 BlissHiveLogContainer blissHiveLogContainer = new BlissHiveLogContainer();
 
                 int maximum = blissHiveLogContainer.GetLogCount(filePath);
@@ -73,12 +76,17 @@ namespace DayzLogParser.UI.BlissHive {
             // Loads in survivors
             this.dayzLogParserForm.blissHivePlayerTreeHandler.LoadSurvivors();
 
+            // Loads in objects
+            this.dayzLogParserForm.blissHiveObjectTreeHandler.LoadObjects();
+
             // Cleanup the status bar, progress bar etc
             this.dayzLogParserForm.CleanupParse();
         }
 
+        private double _previousParseTime { get; set; }
+        private double _previousParseCount { get; set; }
         /// <summary>
-        /// 
+        /// Whenever the parse was updated.
         /// </summary>
         /// <param name="current"></param>
         /// <param name="max"></param>
@@ -86,9 +94,31 @@ namespace DayzLogParser.UI.BlissHive {
             if (this.dayzLogParserForm.blissHiveDownloadProgressBar.InvokeRequired) {
                 this.dayzLogParserForm.BeginInvoke(new MethodInvoker(delegate() { this.OnParseProgress(current, max); }));
             } else {
+                if (current % 10 == 0) {
+                    double currentParseTime = new TimeSpan(DateTime.UtcNow.Ticks).TotalMilliseconds;
+                    if (currentParseTime - this._previousParseTime > 1000) {
+                        double currentParseCount = current - this._previousParseCount;
+                        double toGo = max - current;
+
+                        int secondsRemaining = (int)(toGo / currentParseCount);
+
+                        if (secondsRemaining > 0) {
+                            TimeSpan t = TimeSpan.FromSeconds(secondsRemaining);
+
+                            this.dayzLogParserForm.blissHiveProgressTimeRemainingLbl.Text =
+                                "Time Remaining: " + 
+                                String.Format("{0:D2}:{1:D2}:{2:D2}",
+                                        t.Hours,
+                                        t.Minutes,
+                                        t.Seconds);
+                        }
+
+                        this._previousParseCount = current;
+                        this._previousParseTime = currentParseTime;
+                    }
+                }
                 this.dayzLogParserForm.blissHiveDownloadProgressBar.Maximum = max;
                 this.dayzLogParserForm.blissHiveDownloadProgressBar.Value = current;
-                // Console.WriteLine(current + "/" + max);
             }
         }
 

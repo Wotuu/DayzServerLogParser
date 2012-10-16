@@ -21,14 +21,16 @@ namespace DayzLogParser.UI {
         public BlissHiveDownloadHandler blissHiveDownloadHandler { get; set; }
         public BlissHiveParseHandler blissHiveParseHandler { get; set; }
         public BlissHivePlayerTreeHandler blissHivePlayerTreeHandler { get; set; }
+        public BlissHiveObjectTreeHandler blissHiveObjectTreeHandler { get; set; }
 
         public DayzLogParserForm() {
             InitializeComponent();
             this.blissHiveLogFetchTimeDropdown.SelectedIndex = 0;
             this.blissHivePlayerTreeHandler = new BlissHivePlayerTreeHandler(this);
+            this.blissHiveObjectTreeHandler = new BlissHiveObjectTreeHandler(this);
             
             // Expands the "survivor" node
-            foreach( TreeNode node in this.blissHivePlayerTree.Nodes ){
+            foreach( TreeNode node in this.blissHiveTree.Nodes ){
                 node.Expand();
             }
 
@@ -76,9 +78,10 @@ namespace DayzLogParser.UI {
         /// <param name="e"></param>
         private void BlisshiveFetchMinutesTF_TextChanged(object sender, EventArgs e) {
             int value = 0;
-            if (this.blisshiveFetchMinutesTF.Text.Length > 0 &&
-                Int32.TryParse(this.blisshiveFetchMinutesTF.Text, out value) &&
-                value > 0) {
+            if (this.blissHiveFetchMinutesTF.Text.Length > 0 &&
+                Int32.TryParse(this.blissHiveFetchMinutesTF.Text, out value) &&
+                value > 0 &&
+                this.blissHiveDownloadLogBtn.Text == "Start") {
                 this.blissHiveDownloadLogBtn.Enabled = true;
             } else this.blissHiveDownloadLogBtn.Enabled = false;
         }
@@ -97,6 +100,8 @@ namespace DayzLogParser.UI {
 
                 this.SetStatusText(0, "");
                 this.SetStatusText(1, "");
+
+                this.blissHiveProgressTimeRemainingLbl.Text = "";
             }
         }
 
@@ -110,7 +115,8 @@ namespace DayzLogParser.UI {
             } else {
                 if (this.blissHiveParseHandler != null)
                     this.blissHiveParseHandler.ClearProgressBar();
-                this.blissHiveDownloadLogBtn.Enabled = true;
+                if( this.blissHiveFetchMinutesTF.Text.Length > 0 )
+                    this.blissHiveDownloadLogBtn.Enabled = true;
                 this.blissHiveDownloadLogBtn.Text = "Start";
 
                 foreach (MenuItem item in this.fileMenuItem.MenuItems) {
@@ -120,8 +126,12 @@ namespace DayzLogParser.UI {
                         // break;
                     }
                 }
+
                 this.SetStatusText(0, "");
                 this.SetStatusText(1, "");
+
+                this.blissHivePlayerName.Text = "Select a survivor from the survivor tree";
+                this.blissHiveProgressTimeRemainingLbl.Text = "";
             }
         }
 

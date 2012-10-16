@@ -30,7 +30,7 @@
             treeNode1,
             treeNode2});
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Objects");
-            this.blissHivePlayerTree = new System.Windows.Forms.TreeView();
+            this.blissHiveTree = new System.Windows.Forms.TreeView();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.fileMenuItem = new System.Windows.Forms.MenuItem();
@@ -41,28 +41,17 @@
             this.blissHiveDownloadLogBtn = new System.Windows.Forms.Button();
             this.logfilesTabControl = new System.Windows.Forms.TabControl();
             this.blissHiveTab = new System.Windows.Forms.TabPage();
-            this.blisshiveFetchMinutesTF = new DayzLogParser.UI.IntTextBox();
-            this.blissHivePlayerName = new System.Windows.Forms.Label();
+            this.blissHiveCardControl = new System.Windows.Forms.TabControl();
+            this.blissHiveCardControlPlayerTab = new System.Windows.Forms.TabPage();
             this.blissHivePlayerDataPanel = new System.Windows.Forms.Panel();
             this.blissHivePlayerDataTabControl = new System.Windows.Forms.TabControl();
             this.blissHivePlayerDataTabFormattedData = new System.Windows.Forms.TabPage();
-            this.blissHiveFormattedLogDataListView = new System.Windows.Forms.ListView();
+            this.blissHivePlayerDataFormattedLogDataListView = new System.Windows.Forms.ListView();
             this.blissHivePlayerDataFormattedDataTimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.blissHivePlayerDataFormattedDataFunctionColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.blissHivePlayerDataFormattedDataParameterColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.blissHivePlayerDataTabRawLogData = new System.Windows.Forms.TabPage();
-            this.blissHiveRawLogDataTextBox = new System.Windows.Forms.TextBox();
-            this.blissHivePlayerDataTabInventory = new System.Windows.Forms.TabPage();
-            this.blissHiveInventoryBackpackGroupBox = new System.Windows.Forms.GroupBox();
-            this.blissHiveInventoryBackpackPanel = new System.Windows.Forms.Panel();
-            this.blissHivePlayerDataInventoryBackpackListView = new System.Windows.Forms.ListView();
-            this.blissHiveInventoryBackpackQuantityColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.blissHiveInventoryBackpackItemColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.blissHiveInventoryInventoryGroupBox = new System.Windows.Forms.GroupBox();
-            this.blissHiveInventoryInventoryPanel = new System.Windows.Forms.Panel();
-            this.blissHivePlayerDataInventoryInventoryListView = new System.Windows.Forms.ListView();
-            this.blissHiveInventoryInventoryQuantityColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.blissHiveInventoryInventoryItem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHivePlayerDataRawLogDataTextBox = new System.Windows.Forms.TextBox();
             this.blissHivePlayerDataTabInventoryHistory = new System.Windows.Forms.TabPage();
             this.blissHivePlayerDataInventoryHistoryComboBox = new System.Windows.Forms.ComboBox();
             this.blissHivePlayerDataInventoryHistorySelectLbl = new System.Windows.Forms.Label();
@@ -76,10 +65,53 @@
             this.blissHivePlayerDataInventoryHistoryInventoryListView = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHivePlayerDataTabDebugMonitorHistory = new System.Windows.Forms.TabPage();
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox = new System.Windows.Forms.ComboBox();
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.blissHivePlayerDataDebugMonitorHistoryListView = new System.Windows.Forms.ListView();
+            this.blissHivePlayerDataDebugMonitorListViewNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHivePlayerDataDebugMonitorListViewValueColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHivePlayerDataDebugMonitorHistorySelectLbl = new System.Windows.Forms.Label();
             this.blissHivePlayerDataTabActivityLog = new System.Windows.Forms.TabPage();
             this.blissHiveActivityLog = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHiveCardControlObjectTab = new System.Windows.Forms.TabPage();
+            this.blissHiveObjectDataTabControl = new System.Windows.Forms.TabControl();
+            this.blissHiveObjectDataFormattedLogDataTab = new System.Windows.Forms.TabPage();
+            this.blissHiveObjectDataFormattedLogDataListView = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHiveObjectDataRawLogDataTab = new System.Windows.Forms.TabPage();
+            this.blissHiveObjectDataRawLogDataTextBox = new System.Windows.Forms.TextBox();
+            this.blissHiveObjectDataInventoryTab = new System.Windows.Forms.TabPage();
+            this.blissHiveObjectDataInventoryHistoryComboBox = new System.Windows.Forms.ComboBox();
+            this.blissHiveObjectDataInventoryHistorySelectLbl = new System.Windows.Forms.Label();
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.blissHiveObjectDataInventoryHistoryBackpackListView = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox = new System.Windows.Forms.GroupBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.blissHiveObjectDataInventoryHistoryInventoryListView = new System.Windows.Forms.ListView();
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHiveObjectDataHealthTab = new System.Windows.Forms.TabPage();
+            this.blissHiveObjectDataHealthGroupBox = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.blissHiveObjectDataHealthListView = new System.Windows.Forms.ListView();
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHiveObjectDataActivityLogTab = new System.Windows.Forms.TabPage();
+            this.blissHiveObjectDataActivityLogListView = new System.Windows.Forms.ListView();
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.blissHiveProgressTimeRemainingLbl = new System.Windows.Forms.Label();
+            this.blissHiveFetchMinutesTF = new DayzLogParser.UI.IntTextBox();
+            this.blissHivePlayerName = new System.Windows.Forms.Label();
             this.blissHiveDownloadProgressBar = new System.Windows.Forms.ProgressBar();
             this.blissHiveLogFetchTimeDropdown = new System.Windows.Forms.ComboBox();
             this.blissHiveFetchLogLbl = new System.Windows.Forms.Label();
@@ -88,30 +120,45 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusText1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusText2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.blissHiveObjectDataHealthTypeEstimateLbl = new System.Windows.Forms.Label();
+            this.blissHiveObjectDataHealthTypeEstimateTextBox = new System.Windows.Forms.TextBox();
             this.logfilesTabControl.SuspendLayout();
             this.blissHiveTab.SuspendLayout();
+            this.blissHiveCardControl.SuspendLayout();
+            this.blissHiveCardControlPlayerTab.SuspendLayout();
             this.blissHivePlayerDataPanel.SuspendLayout();
             this.blissHivePlayerDataTabControl.SuspendLayout();
             this.blissHivePlayerDataTabFormattedData.SuspendLayout();
             this.blissHivePlayerDataTabRawLogData.SuspendLayout();
-            this.blissHivePlayerDataTabInventory.SuspendLayout();
-            this.blissHiveInventoryBackpackGroupBox.SuspendLayout();
-            this.blissHiveInventoryBackpackPanel.SuspendLayout();
-            this.blissHiveInventoryInventoryGroupBox.SuspendLayout();
-            this.blissHiveInventoryInventoryPanel.SuspendLayout();
             this.blissHivePlayerDataTabInventoryHistory.SuspendLayout();
             this.blissHivePlayerDataInventoryHistoryBackpackGroupBox.SuspendLayout();
             this.panel1.SuspendLayout();
             this.blissHivePlayerDataInventoryHistoryInventoryGroupBox.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.blissHivePlayerDataTabDebugMonitorHistory.SuspendLayout();
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.blissHivePlayerDataTabActivityLog.SuspendLayout();
+            this.blissHiveCardControlObjectTab.SuspendLayout();
+            this.blissHiveObjectDataTabControl.SuspendLayout();
+            this.blissHiveObjectDataFormattedLogDataTab.SuspendLayout();
+            this.blissHiveObjectDataRawLogDataTab.SuspendLayout();
+            this.blissHiveObjectDataInventoryTab.SuspendLayout();
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.blissHiveObjectDataHealthTab.SuspendLayout();
+            this.blissHiveObjectDataHealthGroupBox.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.blissHiveObjectDataActivityLogTab.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // blissHivePlayerTree
+            // blissHiveTree
             // 
-            this.blissHivePlayerTree.Location = new System.Drawing.Point(6, 30);
-            this.blissHivePlayerTree.Name = "blissHivePlayerTree";
+            this.blissHiveTree.Location = new System.Drawing.Point(6, 30);
+            this.blissHiveTree.Name = "blissHiveTree";
             treeNode1.Name = "blisshiveTreeNodeOnline";
             treeNode1.Tag = "onlineSurvivors";
             treeNode1.Text = "Online";
@@ -120,14 +167,16 @@
             treeNode2.Text = "Offline";
             treeNode3.ForeColor = System.Drawing.Color.Black;
             treeNode3.Name = "blisshiveTreeNodePlayers";
+            treeNode3.Tag = "survivors";
             treeNode3.Text = "Survivors";
             treeNode4.Name = "blisshiveTreeNodeObjects";
+            treeNode4.Tag = "objects";
             treeNode4.Text = "Objects";
-            this.blissHivePlayerTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.blissHiveTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
             treeNode4});
-            this.blissHivePlayerTree.Size = new System.Drawing.Size(219, 396);
-            this.blissHivePlayerTree.TabIndex = 1;
+            this.blissHiveTree.Size = new System.Drawing.Size(219, 396);
+            this.blissHiveTree.TabIndex = 1;
             // 
             // exitToolStripMenuItem
             // 
@@ -196,13 +245,14 @@
             // 
             // blissHiveTab
             // 
-            this.blissHiveTab.Controls.Add(this.blisshiveFetchMinutesTF);
+            this.blissHiveTab.Controls.Add(this.blissHiveCardControl);
+            this.blissHiveTab.Controls.Add(this.blissHiveProgressTimeRemainingLbl);
+            this.blissHiveTab.Controls.Add(this.blissHiveFetchMinutesTF);
             this.blissHiveTab.Controls.Add(this.blissHivePlayerName);
-            this.blissHiveTab.Controls.Add(this.blissHivePlayerDataPanel);
             this.blissHiveTab.Controls.Add(this.blissHiveDownloadProgressBar);
             this.blissHiveTab.Controls.Add(this.blissHiveLogFetchTimeDropdown);
             this.blissHiveTab.Controls.Add(this.blissHiveFetchLogLbl);
-            this.blissHiveTab.Controls.Add(this.blissHivePlayerTree);
+            this.blissHiveTab.Controls.Add(this.blissHiveTree);
             this.blissHiveTab.Controls.Add(this.blissHiveDownloadLogBtn);
             this.blissHiveTab.Location = new System.Drawing.Point(4, 22);
             this.blissHiveTab.Name = "blissHiveTab";
@@ -212,28 +262,35 @@
             this.blissHiveTab.Text = "blisshive.log";
             this.blissHiveTab.UseVisualStyleBackColor = true;
             // 
-            // blisshiveFetchMinutesTF
+            // blissHiveCardControl
             // 
-            this.blisshiveFetchMinutesTF.Location = new System.Drawing.Point(93, 4);
-            this.blisshiveFetchMinutesTF.Name = "blisshiveFetchMinutesTF";
-            this.blisshiveFetchMinutesTF.Size = new System.Drawing.Size(42, 20);
-            this.blisshiveFetchMinutesTF.TabIndex = 8;
-            this.blisshiveFetchMinutesTF.TextChanged += new System.EventHandler(this.BlisshiveFetchMinutesTF_TextChanged);
+            this.blissHiveCardControl.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.blissHiveCardControl.Controls.Add(this.blissHiveCardControlPlayerTab);
+            this.blissHiveCardControl.Controls.Add(this.blissHiveCardControlObjectTab);
+            this.blissHiveCardControl.ItemSize = new System.Drawing.Size(90, 4);
+            this.blissHiveCardControl.Location = new System.Drawing.Point(231, 46);
+            this.blissHiveCardControl.Name = "blissHiveCardControl";
+            this.blissHiveCardControl.SelectedIndex = 0;
+            this.blissHiveCardControl.Size = new System.Drawing.Size(700, 387);
+            this.blissHiveCardControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.blissHiveCardControl.TabIndex = 10;
             // 
-            // blissHivePlayerName
+            // blissHiveCardControlPlayerTab
             // 
-            this.blissHivePlayerName.AutoSize = true;
-            this.blissHivePlayerName.Location = new System.Drawing.Point(234, 30);
-            this.blissHivePlayerName.Name = "blissHivePlayerName";
-            this.blissHivePlayerName.Size = new System.Drawing.Size(231, 13);
-            this.blissHivePlayerName.TabIndex = 1;
-            this.blissHivePlayerName.Text = "Get stated by downloading or opening a log file.";
+            this.blissHiveCardControlPlayerTab.BackColor = System.Drawing.Color.Transparent;
+            this.blissHiveCardControlPlayerTab.Controls.Add(this.blissHivePlayerDataPanel);
+            this.blissHiveCardControlPlayerTab.Location = new System.Drawing.Point(4, 8);
+            this.blissHiveCardControlPlayerTab.Name = "blissHiveCardControlPlayerTab";
+            this.blissHiveCardControlPlayerTab.Padding = new System.Windows.Forms.Padding(3);
+            this.blissHiveCardControlPlayerTab.Size = new System.Drawing.Size(692, 375);
+            this.blissHiveCardControlPlayerTab.TabIndex = 0;
+            this.blissHiveCardControlPlayerTab.Text = "Player Controls";
             // 
             // blissHivePlayerDataPanel
             // 
             this.blissHivePlayerDataPanel.BackColor = System.Drawing.Color.Transparent;
             this.blissHivePlayerDataPanel.Controls.Add(this.blissHivePlayerDataTabControl);
-            this.blissHivePlayerDataPanel.Location = new System.Drawing.Point(231, 39);
+            this.blissHivePlayerDataPanel.Location = new System.Drawing.Point(2, 0);
             this.blissHivePlayerDataPanel.Name = "blissHivePlayerDataPanel";
             this.blissHivePlayerDataPanel.Size = new System.Drawing.Size(689, 394);
             this.blissHivePlayerDataPanel.TabIndex = 7;
@@ -242,10 +299,10 @@
             // 
             this.blissHivePlayerDataTabControl.Controls.Add(this.blissHivePlayerDataTabFormattedData);
             this.blissHivePlayerDataTabControl.Controls.Add(this.blissHivePlayerDataTabRawLogData);
-            this.blissHivePlayerDataTabControl.Controls.Add(this.blissHivePlayerDataTabInventory);
             this.blissHivePlayerDataTabControl.Controls.Add(this.blissHivePlayerDataTabInventoryHistory);
+            this.blissHivePlayerDataTabControl.Controls.Add(this.blissHivePlayerDataTabDebugMonitorHistory);
             this.blissHivePlayerDataTabControl.Controls.Add(this.blissHivePlayerDataTabActivityLog);
-            this.blissHivePlayerDataTabControl.Location = new System.Drawing.Point(0, 17);
+            this.blissHivePlayerDataTabControl.Location = new System.Drawing.Point(-1, 0);
             this.blissHivePlayerDataTabControl.Name = "blissHivePlayerDataTabControl";
             this.blissHivePlayerDataTabControl.SelectedIndex = 0;
             this.blissHivePlayerDataTabControl.Size = new System.Drawing.Size(691, 378);
@@ -254,7 +311,7 @@
             // 
             // blissHivePlayerDataTabFormattedData
             // 
-            this.blissHivePlayerDataTabFormattedData.Controls.Add(this.blissHiveFormattedLogDataListView);
+            this.blissHivePlayerDataTabFormattedData.Controls.Add(this.blissHivePlayerDataFormattedLogDataListView);
             this.blissHivePlayerDataTabFormattedData.Location = new System.Drawing.Point(4, 22);
             this.blissHivePlayerDataTabFormattedData.Name = "blissHivePlayerDataTabFormattedData";
             this.blissHivePlayerDataTabFormattedData.Padding = new System.Windows.Forms.Padding(3);
@@ -264,18 +321,18 @@
             this.blissHivePlayerDataTabFormattedData.Text = "Formatted Log Data";
             this.blissHivePlayerDataTabFormattedData.UseVisualStyleBackColor = true;
             // 
-            // blissHiveFormattedLogDataListView
+            // blissHivePlayerDataFormattedLogDataListView
             // 
-            this.blissHiveFormattedLogDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.blissHivePlayerDataFormattedLogDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.blissHivePlayerDataFormattedDataTimeColumn,
             this.blissHivePlayerDataFormattedDataFunctionColumn,
             this.blissHivePlayerDataFormattedDataParameterColumn});
-            this.blissHiveFormattedLogDataListView.Location = new System.Drawing.Point(0, 0);
-            this.blissHiveFormattedLogDataListView.Name = "blissHiveFormattedLogDataListView";
-            this.blissHiveFormattedLogDataListView.Size = new System.Drawing.Size(681, 351);
-            this.blissHiveFormattedLogDataListView.TabIndex = 0;
-            this.blissHiveFormattedLogDataListView.UseCompatibleStateImageBehavior = false;
-            this.blissHiveFormattedLogDataListView.View = System.Windows.Forms.View.Details;
+            this.blissHivePlayerDataFormattedLogDataListView.Location = new System.Drawing.Point(0, 0);
+            this.blissHivePlayerDataFormattedLogDataListView.Name = "blissHivePlayerDataFormattedLogDataListView";
+            this.blissHivePlayerDataFormattedLogDataListView.Size = new System.Drawing.Size(681, 351);
+            this.blissHivePlayerDataFormattedLogDataListView.TabIndex = 0;
+            this.blissHivePlayerDataFormattedLogDataListView.UseCompatibleStateImageBehavior = false;
+            this.blissHivePlayerDataFormattedLogDataListView.View = System.Windows.Forms.View.Details;
             // 
             // blissHivePlayerDataFormattedDataTimeColumn
             // 
@@ -294,7 +351,7 @@
             // 
             // blissHivePlayerDataTabRawLogData
             // 
-            this.blissHivePlayerDataTabRawLogData.Controls.Add(this.blissHiveRawLogDataTextBox);
+            this.blissHivePlayerDataTabRawLogData.Controls.Add(this.blissHivePlayerDataRawLogDataTextBox);
             this.blissHivePlayerDataTabRawLogData.Location = new System.Drawing.Point(4, 22);
             this.blissHivePlayerDataTabRawLogData.Name = "blissHivePlayerDataTabRawLogData";
             this.blissHivePlayerDataTabRawLogData.Padding = new System.Windows.Forms.Padding(3);
@@ -304,110 +361,17 @@
             this.blissHivePlayerDataTabRawLogData.Text = "Raw Log Data";
             this.blissHivePlayerDataTabRawLogData.UseVisualStyleBackColor = true;
             // 
-            // blissHiveRawLogDataTextBox
+            // blissHivePlayerDataRawLogDataTextBox
             // 
-            this.blissHiveRawLogDataTextBox.Location = new System.Drawing.Point(0, 0);
-            this.blissHiveRawLogDataTextBox.MaxLength = 2147483647;
-            this.blissHiveRawLogDataTextBox.Multiline = true;
-            this.blissHiveRawLogDataTextBox.Name = "blissHiveRawLogDataTextBox";
-            this.blissHiveRawLogDataTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.blissHiveRawLogDataTextBox.Size = new System.Drawing.Size(681, 351);
-            this.blissHiveRawLogDataTextBox.TabIndex = 0;
-            this.blissHiveRawLogDataTextBox.WordWrap = false;
-            // 
-            // blissHivePlayerDataTabInventory
-            // 
-            this.blissHivePlayerDataTabInventory.Controls.Add(this.blissHiveInventoryBackpackGroupBox);
-            this.blissHivePlayerDataTabInventory.Controls.Add(this.blissHiveInventoryInventoryGroupBox);
-            this.blissHivePlayerDataTabInventory.Location = new System.Drawing.Point(4, 22);
-            this.blissHivePlayerDataTabInventory.Name = "blissHivePlayerDataTabInventory";
-            this.blissHivePlayerDataTabInventory.Size = new System.Drawing.Size(683, 352);
-            this.blissHivePlayerDataTabInventory.TabIndex = 2;
-            this.blissHivePlayerDataTabInventory.Tag = "inventory";
-            this.blissHivePlayerDataTabInventory.Text = "Inventory";
-            this.blissHivePlayerDataTabInventory.UseVisualStyleBackColor = true;
-            // 
-            // blissHiveInventoryBackpackGroupBox
-            // 
-            this.blissHiveInventoryBackpackGroupBox.Controls.Add(this.blissHiveInventoryBackpackPanel);
-            this.blissHiveInventoryBackpackGroupBox.Location = new System.Drawing.Point(343, 4);
-            this.blissHiveInventoryBackpackGroupBox.Name = "blissHiveInventoryBackpackGroupBox";
-            this.blissHiveInventoryBackpackGroupBox.Size = new System.Drawing.Size(338, 345);
-            this.blissHiveInventoryBackpackGroupBox.TabIndex = 5;
-            this.blissHiveInventoryBackpackGroupBox.TabStop = false;
-            this.blissHiveInventoryBackpackGroupBox.Text = "Backpack";
-            // 
-            // blissHiveInventoryBackpackPanel
-            // 
-            this.blissHiveInventoryBackpackPanel.Controls.Add(this.blissHivePlayerDataInventoryBackpackListView);
-            this.blissHiveInventoryBackpackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blissHiveInventoryBackpackPanel.Location = new System.Drawing.Point(3, 16);
-            this.blissHiveInventoryBackpackPanel.Name = "blissHiveInventoryBackpackPanel";
-            this.blissHiveInventoryBackpackPanel.Size = new System.Drawing.Size(332, 326);
-            this.blissHiveInventoryBackpackPanel.TabIndex = 3;
-            // 
-            // blissHivePlayerDataInventoryBackpackListView
-            // 
-            this.blissHivePlayerDataInventoryBackpackListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.blissHiveInventoryBackpackQuantityColumn,
-            this.blissHiveInventoryBackpackItemColumn});
-            this.blissHivePlayerDataInventoryBackpackListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blissHivePlayerDataInventoryBackpackListView.Location = new System.Drawing.Point(0, 0);
-            this.blissHivePlayerDataInventoryBackpackListView.Name = "blissHivePlayerDataInventoryBackpackListView";
-            this.blissHivePlayerDataInventoryBackpackListView.Size = new System.Drawing.Size(332, 326);
-            this.blissHivePlayerDataInventoryBackpackListView.TabIndex = 1;
-            this.blissHivePlayerDataInventoryBackpackListView.UseCompatibleStateImageBehavior = false;
-            this.blissHivePlayerDataInventoryBackpackListView.View = System.Windows.Forms.View.Details;
-            // 
-            // blissHiveInventoryBackpackQuantityColumn
-            // 
-            this.blissHiveInventoryBackpackQuantityColumn.Text = "Qnty";
-            // 
-            // blissHiveInventoryBackpackItemColumn
-            // 
-            this.blissHiveInventoryBackpackItemColumn.Text = "Item";
-            this.blissHiveInventoryBackpackItemColumn.Width = 260;
-            // 
-            // blissHiveInventoryInventoryGroupBox
-            // 
-            this.blissHiveInventoryInventoryGroupBox.Controls.Add(this.blissHiveInventoryInventoryPanel);
-            this.blissHiveInventoryInventoryGroupBox.Location = new System.Drawing.Point(4, 4);
-            this.blissHiveInventoryInventoryGroupBox.Name = "blissHiveInventoryInventoryGroupBox";
-            this.blissHiveInventoryInventoryGroupBox.Size = new System.Drawing.Size(336, 345);
-            this.blissHiveInventoryInventoryGroupBox.TabIndex = 4;
-            this.blissHiveInventoryInventoryGroupBox.TabStop = false;
-            this.blissHiveInventoryInventoryGroupBox.Text = "Inventory";
-            // 
-            // blissHiveInventoryInventoryPanel
-            // 
-            this.blissHiveInventoryInventoryPanel.Controls.Add(this.blissHivePlayerDataInventoryInventoryListView);
-            this.blissHiveInventoryInventoryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blissHiveInventoryInventoryPanel.Location = new System.Drawing.Point(3, 16);
-            this.blissHiveInventoryInventoryPanel.Name = "blissHiveInventoryInventoryPanel";
-            this.blissHiveInventoryInventoryPanel.Size = new System.Drawing.Size(330, 326);
-            this.blissHiveInventoryInventoryPanel.TabIndex = 3;
-            // 
-            // blissHivePlayerDataInventoryInventoryListView
-            // 
-            this.blissHivePlayerDataInventoryInventoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.blissHiveInventoryInventoryQuantityColumn,
-            this.blissHiveInventoryInventoryItem});
-            this.blissHivePlayerDataInventoryInventoryListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blissHivePlayerDataInventoryInventoryListView.Location = new System.Drawing.Point(0, 0);
-            this.blissHivePlayerDataInventoryInventoryListView.Name = "blissHivePlayerDataInventoryInventoryListView";
-            this.blissHivePlayerDataInventoryInventoryListView.Size = new System.Drawing.Size(330, 326);
-            this.blissHivePlayerDataInventoryInventoryListView.TabIndex = 0;
-            this.blissHivePlayerDataInventoryInventoryListView.UseCompatibleStateImageBehavior = false;
-            this.blissHivePlayerDataInventoryInventoryListView.View = System.Windows.Forms.View.Details;
-            // 
-            // blissHiveInventoryInventoryQuantityColumn
-            // 
-            this.blissHiveInventoryInventoryQuantityColumn.Text = "Qnty";
-            // 
-            // blissHiveInventoryInventoryItem
-            // 
-            this.blissHiveInventoryInventoryItem.Text = "Item";
-            this.blissHiveInventoryInventoryItem.Width = 260;
+            this.blissHivePlayerDataRawLogDataTextBox.Location = new System.Drawing.Point(0, 0);
+            this.blissHivePlayerDataRawLogDataTextBox.MaxLength = 2147483647;
+            this.blissHivePlayerDataRawLogDataTextBox.Multiline = true;
+            this.blissHivePlayerDataRawLogDataTextBox.Name = "blissHivePlayerDataRawLogDataTextBox";
+            this.blissHivePlayerDataRawLogDataTextBox.ReadOnly = true;
+            this.blissHivePlayerDataRawLogDataTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.blissHivePlayerDataRawLogDataTextBox.Size = new System.Drawing.Size(681, 351);
+            this.blissHivePlayerDataRawLogDataTextBox.TabIndex = 0;
+            this.blissHivePlayerDataRawLogDataTextBox.WordWrap = false;
             // 
             // blissHivePlayerDataTabInventoryHistory
             // 
@@ -427,7 +391,7 @@
             // 
             this.blissHivePlayerDataInventoryHistoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.blissHivePlayerDataInventoryHistoryComboBox.FormattingEnabled = true;
-            this.blissHivePlayerDataInventoryHistoryComboBox.Location = new System.Drawing.Point(109, 1);
+            this.blissHivePlayerDataInventoryHistoryComboBox.Location = new System.Drawing.Point(119, 0);
             this.blissHivePlayerDataInventoryHistoryComboBox.Name = "blissHivePlayerDataInventoryHistoryComboBox";
             this.blissHivePlayerDataInventoryHistoryComboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.blissHivePlayerDataInventoryHistoryComboBox.Size = new System.Drawing.Size(152, 21);
@@ -526,6 +490,80 @@
             this.columnHeader6.Text = "Item";
             this.columnHeader6.Width = 260;
             // 
+            // blissHivePlayerDataTabDebugMonitorHistory
+            // 
+            this.blissHivePlayerDataTabDebugMonitorHistory.Controls.Add(this.blissHivePlayerDataDebugMonitorHistoryComboBox);
+            this.blissHivePlayerDataTabDebugMonitorHistory.Controls.Add(this.blissHivePlayerDataDebugMonitorHistoryGroupBox);
+            this.blissHivePlayerDataTabDebugMonitorHistory.Controls.Add(this.blissHivePlayerDataDebugMonitorHistorySelectLbl);
+            this.blissHivePlayerDataTabDebugMonitorHistory.Location = new System.Drawing.Point(4, 22);
+            this.blissHivePlayerDataTabDebugMonitorHistory.Name = "blissHivePlayerDataTabDebugMonitorHistory";
+            this.blissHivePlayerDataTabDebugMonitorHistory.Size = new System.Drawing.Size(683, 352);
+            this.blissHivePlayerDataTabDebugMonitorHistory.TabIndex = 5;
+            this.blissHivePlayerDataTabDebugMonitorHistory.Text = "Debug Monitor History";
+            this.blissHivePlayerDataTabDebugMonitorHistory.UseVisualStyleBackColor = true;
+            // 
+            // blissHivePlayerDataDebugMonitorHistoryComboBox
+            // 
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox.FormattingEnabled = true;
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox.Location = new System.Drawing.Point(119, 0);
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox.Name = "blissHivePlayerDataDebugMonitorHistoryComboBox";
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox.Size = new System.Drawing.Size(152, 21);
+            this.blissHivePlayerDataDebugMonitorHistoryComboBox.TabIndex = 11;
+            // 
+            // blissHivePlayerDataDebugMonitorHistoryGroupBox
+            // 
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.Controls.Add(this.panel3);
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.Location = new System.Drawing.Point(3, 20);
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.Name = "blissHivePlayerDataDebugMonitorHistoryGroupBox";
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.Size = new System.Drawing.Size(336, 329);
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.TabIndex = 12;
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.TabStop = false;
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.Text = "Debug Monitor";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.blissHivePlayerDataDebugMonitorHistoryListView);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 16);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(330, 310);
+            this.panel3.TabIndex = 3;
+            // 
+            // blissHivePlayerDataDebugMonitorHistoryListView
+            // 
+            this.blissHivePlayerDataDebugMonitorHistoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.blissHivePlayerDataDebugMonitorListViewNameColumn,
+            this.blissHivePlayerDataDebugMonitorListViewValueColumn});
+            this.blissHivePlayerDataDebugMonitorHistoryListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blissHivePlayerDataDebugMonitorHistoryListView.Location = new System.Drawing.Point(0, 0);
+            this.blissHivePlayerDataDebugMonitorHistoryListView.Name = "blissHivePlayerDataDebugMonitorHistoryListView";
+            this.blissHivePlayerDataDebugMonitorHistoryListView.Size = new System.Drawing.Size(330, 310);
+            this.blissHivePlayerDataDebugMonitorHistoryListView.TabIndex = 0;
+            this.blissHivePlayerDataDebugMonitorHistoryListView.UseCompatibleStateImageBehavior = false;
+            this.blissHivePlayerDataDebugMonitorHistoryListView.View = System.Windows.Forms.View.Details;
+            // 
+            // blissHivePlayerDataDebugMonitorListViewNameColumn
+            // 
+            this.blissHivePlayerDataDebugMonitorListViewNameColumn.Text = "Name";
+            this.blissHivePlayerDataDebugMonitorListViewNameColumn.Width = 158;
+            // 
+            // blissHivePlayerDataDebugMonitorListViewValueColumn
+            // 
+            this.blissHivePlayerDataDebugMonitorListViewValueColumn.Text = "Value";
+            this.blissHivePlayerDataDebugMonitorListViewValueColumn.Width = 260;
+            // 
+            // blissHivePlayerDataDebugMonitorHistorySelectLbl
+            // 
+            this.blissHivePlayerDataDebugMonitorHistorySelectLbl.AutoSize = true;
+            this.blissHivePlayerDataDebugMonitorHistorySelectLbl.Location = new System.Drawing.Point(6, 4);
+            this.blissHivePlayerDataDebugMonitorHistorySelectLbl.Name = "blissHivePlayerDataDebugMonitorHistorySelectLbl";
+            this.blissHivePlayerDataDebugMonitorHistorySelectLbl.Size = new System.Drawing.Size(107, 13);
+            this.blissHivePlayerDataDebugMonitorHistorySelectLbl.TabIndex = 10;
+            this.blissHivePlayerDataDebugMonitorHistorySelectLbl.Text = "Select debug monitor";
+            // 
             // blissHivePlayerDataTabActivityLog
             // 
             this.blissHivePlayerDataTabActivityLog.Controls.Add(this.blissHiveActivityLog);
@@ -558,6 +596,325 @@
             // 
             this.columnHeader2.Text = "What happened?";
             this.columnHeader2.Width = 620;
+            // 
+            // blissHiveCardControlObjectTab
+            // 
+            this.blissHiveCardControlObjectTab.BackColor = System.Drawing.Color.Transparent;
+            this.blissHiveCardControlObjectTab.Controls.Add(this.blissHiveObjectDataTabControl);
+            this.blissHiveCardControlObjectTab.Location = new System.Drawing.Point(4, 8);
+            this.blissHiveCardControlObjectTab.Name = "blissHiveCardControlObjectTab";
+            this.blissHiveCardControlObjectTab.Padding = new System.Windows.Forms.Padding(3);
+            this.blissHiveCardControlObjectTab.Size = new System.Drawing.Size(692, 375);
+            this.blissHiveCardControlObjectTab.TabIndex = 1;
+            this.blissHiveCardControlObjectTab.Text = "Object Controls";
+            // 
+            // blissHiveObjectDataTabControl
+            // 
+            this.blissHiveObjectDataTabControl.Controls.Add(this.blissHiveObjectDataFormattedLogDataTab);
+            this.blissHiveObjectDataTabControl.Controls.Add(this.blissHiveObjectDataRawLogDataTab);
+            this.blissHiveObjectDataTabControl.Controls.Add(this.blissHiveObjectDataInventoryTab);
+            this.blissHiveObjectDataTabControl.Controls.Add(this.blissHiveObjectDataHealthTab);
+            this.blissHiveObjectDataTabControl.Controls.Add(this.blissHiveObjectDataActivityLogTab);
+            this.blissHiveObjectDataTabControl.Location = new System.Drawing.Point(1, 0);
+            this.blissHiveObjectDataTabControl.Name = "blissHiveObjectDataTabControl";
+            this.blissHiveObjectDataTabControl.SelectedIndex = 0;
+            this.blissHiveObjectDataTabControl.Size = new System.Drawing.Size(691, 378);
+            this.blissHiveObjectDataTabControl.TabIndex = 3;
+            this.blissHiveObjectDataTabControl.Tag = "";
+            // 
+            // blissHiveObjectDataFormattedLogDataTab
+            // 
+            this.blissHiveObjectDataFormattedLogDataTab.Controls.Add(this.blissHiveObjectDataFormattedLogDataListView);
+            this.blissHiveObjectDataFormattedLogDataTab.Location = new System.Drawing.Point(4, 22);
+            this.blissHiveObjectDataFormattedLogDataTab.Name = "blissHiveObjectDataFormattedLogDataTab";
+            this.blissHiveObjectDataFormattedLogDataTab.Padding = new System.Windows.Forms.Padding(3);
+            this.blissHiveObjectDataFormattedLogDataTab.Size = new System.Drawing.Size(683, 352);
+            this.blissHiveObjectDataFormattedLogDataTab.TabIndex = 0;
+            this.blissHiveObjectDataFormattedLogDataTab.Tag = "formattedLogData";
+            this.blissHiveObjectDataFormattedLogDataTab.Text = "Formatted Log Data";
+            this.blissHiveObjectDataFormattedLogDataTab.UseVisualStyleBackColor = true;
+            // 
+            // blissHiveObjectDataFormattedLogDataListView
+            // 
+            this.blissHiveObjectDataFormattedLogDataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.blissHiveObjectDataFormattedLogDataListView.Location = new System.Drawing.Point(0, 0);
+            this.blissHiveObjectDataFormattedLogDataListView.Name = "blissHiveObjectDataFormattedLogDataListView";
+            this.blissHiveObjectDataFormattedLogDataListView.Size = new System.Drawing.Size(681, 351);
+            this.blissHiveObjectDataFormattedLogDataListView.TabIndex = 0;
+            this.blissHiveObjectDataFormattedLogDataListView.UseCompatibleStateImageBehavior = false;
+            this.blissHiveObjectDataFormattedLogDataListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Timestamp";
+            this.columnHeader7.Width = 120;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Function Name";
+            this.columnHeader8.Width = 120;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Parameters";
+            this.columnHeader9.Width = 415;
+            // 
+            // blissHiveObjectDataRawLogDataTab
+            // 
+            this.blissHiveObjectDataRawLogDataTab.Controls.Add(this.blissHiveObjectDataRawLogDataTextBox);
+            this.blissHiveObjectDataRawLogDataTab.Location = new System.Drawing.Point(4, 22);
+            this.blissHiveObjectDataRawLogDataTab.Name = "blissHiveObjectDataRawLogDataTab";
+            this.blissHiveObjectDataRawLogDataTab.Padding = new System.Windows.Forms.Padding(3);
+            this.blissHiveObjectDataRawLogDataTab.Size = new System.Drawing.Size(683, 352);
+            this.blissHiveObjectDataRawLogDataTab.TabIndex = 1;
+            this.blissHiveObjectDataRawLogDataTab.Tag = "rawLogData";
+            this.blissHiveObjectDataRawLogDataTab.Text = "Raw Log Data";
+            this.blissHiveObjectDataRawLogDataTab.UseVisualStyleBackColor = true;
+            // 
+            // blissHiveObjectDataRawLogDataTextBox
+            // 
+            this.blissHiveObjectDataRawLogDataTextBox.Location = new System.Drawing.Point(0, 0);
+            this.blissHiveObjectDataRawLogDataTextBox.MaxLength = 2147483647;
+            this.blissHiveObjectDataRawLogDataTextBox.Multiline = true;
+            this.blissHiveObjectDataRawLogDataTextBox.Name = "blissHiveObjectDataRawLogDataTextBox";
+            this.blissHiveObjectDataRawLogDataTextBox.ReadOnly = true;
+            this.blissHiveObjectDataRawLogDataTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.blissHiveObjectDataRawLogDataTextBox.Size = new System.Drawing.Size(681, 351);
+            this.blissHiveObjectDataRawLogDataTextBox.TabIndex = 0;
+            this.blissHiveObjectDataRawLogDataTextBox.WordWrap = false;
+            // 
+            // blissHiveObjectDataInventoryTab
+            // 
+            this.blissHiveObjectDataInventoryTab.Controls.Add(this.blissHiveObjectDataInventoryHistoryComboBox);
+            this.blissHiveObjectDataInventoryTab.Controls.Add(this.blissHiveObjectDataInventoryHistorySelectLbl);
+            this.blissHiveObjectDataInventoryTab.Controls.Add(this.blissHiveObjectDataInventoryHistoryBackpackGroupBox);
+            this.blissHiveObjectDataInventoryTab.Controls.Add(this.blissHiveObjectDataInventoryHistoryInventoryGroupBox);
+            this.blissHiveObjectDataInventoryTab.Location = new System.Drawing.Point(4, 22);
+            this.blissHiveObjectDataInventoryTab.Name = "blissHiveObjectDataInventoryTab";
+            this.blissHiveObjectDataInventoryTab.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.blissHiveObjectDataInventoryTab.Size = new System.Drawing.Size(683, 352);
+            this.blissHiveObjectDataInventoryTab.TabIndex = 4;
+            this.blissHiveObjectDataInventoryTab.Text = "Inventory History";
+            this.blissHiveObjectDataInventoryTab.UseVisualStyleBackColor = true;
+            // 
+            // blissHiveObjectDataInventoryHistorySelectBox
+            // 
+            this.blissHiveObjectDataInventoryHistoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.blissHiveObjectDataInventoryHistoryComboBox.FormattingEnabled = true;
+            this.blissHiveObjectDataInventoryHistoryComboBox.Location = new System.Drawing.Point(119, 0);
+            this.blissHiveObjectDataInventoryHistoryComboBox.Name = "blissHiveObjectDataInventoryHistorySelectBox";
+            this.blissHiveObjectDataInventoryHistoryComboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.blissHiveObjectDataInventoryHistoryComboBox.Size = new System.Drawing.Size(152, 21);
+            this.blissHiveObjectDataInventoryHistoryComboBox.TabIndex = 9;
+            // 
+            // blissHiveObjectDataInventoryHistorySelectLbl
+            // 
+            this.blissHiveObjectDataInventoryHistorySelectLbl.AutoSize = true;
+            this.blissHiveObjectDataInventoryHistorySelectLbl.Location = new System.Drawing.Point(6, 4);
+            this.blissHiveObjectDataInventoryHistorySelectLbl.Name = "blissHiveObjectDataInventoryHistorySelectLbl";
+            this.blissHiveObjectDataInventoryHistorySelectLbl.Size = new System.Drawing.Size(83, 13);
+            this.blissHiveObjectDataInventoryHistorySelectLbl.TabIndex = 8;
+            this.blissHiveObjectDataInventoryHistorySelectLbl.Text = "Select inventory";
+            // 
+            // blissHiveObjectDataInventoryHistoryBackpackGroupBox
+            // 
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.Controls.Add(this.panel4);
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.Location = new System.Drawing.Point(342, 20);
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.Name = "blissHiveObjectDataInventoryHistoryBackpackGroupBox";
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.Size = new System.Drawing.Size(338, 329);
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.TabIndex = 7;
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.TabStop = false;
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.Text = "Backpack";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.blissHiveObjectDataInventoryHistoryBackpackListView);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 16);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(332, 310);
+            this.panel4.TabIndex = 3;
+            // 
+            // blissHiveObjectDataInventoryHistoryBackpackListView
+            // 
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11});
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.Location = new System.Drawing.Point(0, 0);
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.Name = "blissHiveObjectDataInventoryHistoryBackpackListView";
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.Size = new System.Drawing.Size(332, 310);
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.TabIndex = 1;
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.UseCompatibleStateImageBehavior = false;
+            this.blissHiveObjectDataInventoryHistoryBackpackListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Qnty";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Item";
+            this.columnHeader11.Width = 260;
+            // 
+            // blissHiveObjectDataInventoryHistoryInventoryGroupBox
+            // 
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.Controls.Add(this.panel5);
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.Location = new System.Drawing.Point(3, 20);
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.Name = "blissHiveObjectDataInventoryHistoryInventoryGroupBox";
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.Size = new System.Drawing.Size(336, 329);
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.TabIndex = 6;
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.TabStop = false;
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.Text = "Inventory";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.blissHiveObjectDataInventoryHistoryInventoryListView);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 16);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(330, 310);
+            this.panel5.TabIndex = 3;
+            // 
+            // blissHiveObjectDataInventoryHistoryInventoryListView
+            // 
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader12,
+            this.columnHeader13});
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.Location = new System.Drawing.Point(0, 0);
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.Name = "blissHiveObjectDataInventoryHistoryInventoryListView";
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.Size = new System.Drawing.Size(330, 310);
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.TabIndex = 0;
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.UseCompatibleStateImageBehavior = false;
+            this.blissHiveObjectDataInventoryHistoryInventoryListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Qnty";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Item";
+            this.columnHeader13.Width = 260;
+            // 
+            // blissHiveObjectDataHealthTab
+            // 
+            this.blissHiveObjectDataHealthTab.Controls.Add(this.blissHiveObjectDataHealthTypeEstimateTextBox);
+            this.blissHiveObjectDataHealthTab.Controls.Add(this.blissHiveObjectDataHealthTypeEstimateLbl);
+            this.blissHiveObjectDataHealthTab.Controls.Add(this.blissHiveObjectDataHealthGroupBox);
+            this.blissHiveObjectDataHealthTab.Location = new System.Drawing.Point(4, 22);
+            this.blissHiveObjectDataHealthTab.Name = "blissHiveObjectDataHealthTab";
+            this.blissHiveObjectDataHealthTab.Size = new System.Drawing.Size(683, 352);
+            this.blissHiveObjectDataHealthTab.TabIndex = 5;
+            this.blissHiveObjectDataHealthTab.Text = "Health";
+            this.blissHiveObjectDataHealthTab.UseVisualStyleBackColor = true;
+            // 
+            // blissHiveObjectDataHealthGroupBox
+            // 
+            this.blissHiveObjectDataHealthGroupBox.Controls.Add(this.panel6);
+            this.blissHiveObjectDataHealthGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.blissHiveObjectDataHealthGroupBox.Name = "blissHiveObjectDataHealthGroupBox";
+            this.blissHiveObjectDataHealthGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.blissHiveObjectDataHealthGroupBox.Size = new System.Drawing.Size(336, 346);
+            this.blissHiveObjectDataHealthGroupBox.TabIndex = 12;
+            this.blissHiveObjectDataHealthGroupBox.TabStop = false;
+            this.blissHiveObjectDataHealthGroupBox.Text = "Health";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.blissHiveObjectDataHealthListView);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(3, 16);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(330, 327);
+            this.panel6.TabIndex = 3;
+            // 
+            // blissHiveObjectDataHealthListView
+            // 
+            this.blissHiveObjectDataHealthListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader14,
+            this.columnHeader15});
+            this.blissHiveObjectDataHealthListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blissHiveObjectDataHealthListView.Location = new System.Drawing.Point(0, 0);
+            this.blissHiveObjectDataHealthListView.Name = "blissHiveObjectDataHealthListView";
+            this.blissHiveObjectDataHealthListView.Size = new System.Drawing.Size(330, 327);
+            this.blissHiveObjectDataHealthListView.TabIndex = 0;
+            this.blissHiveObjectDataHealthListView.UseCompatibleStateImageBehavior = false;
+            this.blissHiveObjectDataHealthListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Name";
+            this.columnHeader14.Width = 158;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Value";
+            this.columnHeader15.Width = 260;
+            // 
+            // blissHiveObjectDataActivityLogTab
+            // 
+            this.blissHiveObjectDataActivityLogTab.Controls.Add(this.blissHiveObjectDataActivityLogListView);
+            this.blissHiveObjectDataActivityLogTab.Location = new System.Drawing.Point(4, 22);
+            this.blissHiveObjectDataActivityLogTab.Name = "blissHiveObjectDataActivityLogTab";
+            this.blissHiveObjectDataActivityLogTab.Size = new System.Drawing.Size(683, 352);
+            this.blissHiveObjectDataActivityLogTab.TabIndex = 3;
+            this.blissHiveObjectDataActivityLogTab.Tag = "activity";
+            this.blissHiveObjectDataActivityLogTab.Text = "Activity Log";
+            this.blissHiveObjectDataActivityLogTab.UseVisualStyleBackColor = true;
+            // 
+            // blissHiveObjectDataActivityLogListView
+            // 
+            this.blissHiveObjectDataActivityLogListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader16,
+            this.columnHeader17});
+            this.blissHiveObjectDataActivityLogListView.Location = new System.Drawing.Point(1, 1);
+            this.blissHiveObjectDataActivityLogListView.Name = "blissHiveObjectDataActivityLogListView";
+            this.blissHiveObjectDataActivityLogListView.Size = new System.Drawing.Size(681, 351);
+            this.blissHiveObjectDataActivityLogListView.TabIndex = 1;
+            this.blissHiveObjectDataActivityLogListView.UseCompatibleStateImageBehavior = false;
+            this.blissHiveObjectDataActivityLogListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Timestamp";
+            this.columnHeader16.Width = 120;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "What happened?";
+            this.columnHeader17.Width = 620;
+            // 
+            // blissHiveProgressTimeRemainingLbl
+            // 
+            this.blissHiveProgressTimeRemainingLbl.AutoSize = true;
+            this.blissHiveProgressTimeRemainingLbl.Location = new System.Drawing.Point(785, 30);
+            this.blissHiveProgressTimeRemainingLbl.Name = "blissHiveProgressTimeRemainingLbl";
+            this.blissHiveProgressTimeRemainingLbl.Size = new System.Drawing.Size(0, 13);
+            this.blissHiveProgressTimeRemainingLbl.TabIndex = 9;
+            // 
+            // blissHiveFetchMinutesTF
+            // 
+            this.blissHiveFetchMinutesTF.Location = new System.Drawing.Point(93, 4);
+            this.blissHiveFetchMinutesTF.Name = "blissHiveFetchMinutesTF";
+            this.blissHiveFetchMinutesTF.Size = new System.Drawing.Size(42, 20);
+            this.blissHiveFetchMinutesTF.TabIndex = 8;
+            this.blissHiveFetchMinutesTF.TextChanged += new System.EventHandler(this.BlisshiveFetchMinutesTF_TextChanged);
+            // 
+            // blissHivePlayerName
+            // 
+            this.blissHivePlayerName.AutoSize = true;
+            this.blissHivePlayerName.Location = new System.Drawing.Point(234, 30);
+            this.blissHivePlayerName.Name = "blissHivePlayerName";
+            this.blissHivePlayerName.Size = new System.Drawing.Size(231, 13);
+            this.blissHivePlayerName.TabIndex = 1;
+            this.blissHivePlayerName.Text = "Get stated by downloading or opening a log file.";
             // 
             // blissHiveDownloadProgressBar
             // 
@@ -624,6 +981,24 @@
             this.toolStripStatusText2.Name = "toolStripStatusText2";
             this.toolStripStatusText2.Size = new System.Drawing.Size(0, 17);
             // 
+            // blissHiveObjectDataHealthTypeEstimateLbl
+            // 
+            this.blissHiveObjectDataHealthTypeEstimateLbl.AutoSize = true;
+            this.blissHiveObjectDataHealthTypeEstimateLbl.Location = new System.Drawing.Point(346, 4);
+            this.blissHiveObjectDataHealthTypeEstimateLbl.Name = "blissHiveObjectDataHealthTypeEstimateLbl";
+            this.blissHiveObjectDataHealthTypeEstimateLbl.Size = new System.Drawing.Size(229, 13);
+            this.blissHiveObjectDataHealthTypeEstimateLbl.TabIndex = 13;
+            this.blissHiveObjectDataHealthTypeEstimateLbl.Text = "This object is one of the following vehicle types";
+            // 
+            // blissHiveObjectDataHealthTypeEstimateTextBox
+            // 
+            this.blissHiveObjectDataHealthTypeEstimateTextBox.Location = new System.Drawing.Point(349, 21);
+            this.blissHiveObjectDataHealthTypeEstimateTextBox.Multiline = true;
+            this.blissHiveObjectDataHealthTypeEstimateTextBox.Name = "blissHiveObjectDataHealthTypeEstimateTextBox";
+            this.blissHiveObjectDataHealthTypeEstimateTextBox.ReadOnly = true;
+            this.blissHiveObjectDataHealthTypeEstimateTextBox.Size = new System.Drawing.Size(331, 325);
+            this.blissHiveObjectDataHealthTypeEstimateTextBox.TabIndex = 14;
+            // 
             // DayzLogParserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -641,23 +1016,40 @@
             this.logfilesTabControl.ResumeLayout(false);
             this.blissHiveTab.ResumeLayout(false);
             this.blissHiveTab.PerformLayout();
+            this.blissHiveCardControl.ResumeLayout(false);
+            this.blissHiveCardControlPlayerTab.ResumeLayout(false);
             this.blissHivePlayerDataPanel.ResumeLayout(false);
             this.blissHivePlayerDataTabControl.ResumeLayout(false);
             this.blissHivePlayerDataTabFormattedData.ResumeLayout(false);
             this.blissHivePlayerDataTabRawLogData.ResumeLayout(false);
             this.blissHivePlayerDataTabRawLogData.PerformLayout();
-            this.blissHivePlayerDataTabInventory.ResumeLayout(false);
-            this.blissHiveInventoryBackpackGroupBox.ResumeLayout(false);
-            this.blissHiveInventoryBackpackPanel.ResumeLayout(false);
-            this.blissHiveInventoryInventoryGroupBox.ResumeLayout(false);
-            this.blissHiveInventoryInventoryPanel.ResumeLayout(false);
             this.blissHivePlayerDataTabInventoryHistory.ResumeLayout(false);
             this.blissHivePlayerDataTabInventoryHistory.PerformLayout();
             this.blissHivePlayerDataInventoryHistoryBackpackGroupBox.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.blissHivePlayerDataInventoryHistoryInventoryGroupBox.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.blissHivePlayerDataTabDebugMonitorHistory.ResumeLayout(false);
+            this.blissHivePlayerDataTabDebugMonitorHistory.PerformLayout();
+            this.blissHivePlayerDataDebugMonitorHistoryGroupBox.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.blissHivePlayerDataTabActivityLog.ResumeLayout(false);
+            this.blissHiveCardControlObjectTab.ResumeLayout(false);
+            this.blissHiveObjectDataTabControl.ResumeLayout(false);
+            this.blissHiveObjectDataFormattedLogDataTab.ResumeLayout(false);
+            this.blissHiveObjectDataRawLogDataTab.ResumeLayout(false);
+            this.blissHiveObjectDataRawLogDataTab.PerformLayout();
+            this.blissHiveObjectDataInventoryTab.ResumeLayout(false);
+            this.blissHiveObjectDataInventoryTab.PerformLayout();
+            this.blissHiveObjectDataInventoryHistoryBackpackGroupBox.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.blissHiveObjectDataInventoryHistoryInventoryGroupBox.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.blissHiveObjectDataHealthTab.ResumeLayout(false);
+            this.blissHiveObjectDataHealthTab.PerformLayout();
+            this.blissHiveObjectDataHealthGroupBox.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.blissHiveObjectDataActivityLogTab.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -667,7 +1059,7 @@
 
         #endregion
 
-        public System.Windows.Forms.TreeView blissHivePlayerTree;
+        public System.Windows.Forms.TreeView blissHiveTree;
         public System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         public System.Windows.Forms.MainMenu mainMenu;
         public System.Windows.Forms.MenuItem fileMenuItem;
@@ -687,7 +1079,7 @@
         public System.Windows.Forms.StatusStrip statusStrip;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusText1;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusText2;
-        public IntTextBox blisshiveFetchMinutesTF;
+        public IntTextBox blissHiveFetchMinutesTF;
         private System.Windows.Forms.TabPage blissHivePlayerDataTabFormattedData;
         private System.Windows.Forms.TabPage blissHivePlayerDataTabRawLogData;
         private System.Windows.Forms.ColumnHeader blissHivePlayerDataFormattedDataTimeColumn;
@@ -695,24 +1087,12 @@
         private System.Windows.Forms.ColumnHeader blissHivePlayerDataFormattedDataParameterColumn;
         private System.Windows.Forms.MenuItem openBlissHiveMenuItem;
         private System.Windows.Forms.MenuItem exitSeperator;
-        private System.Windows.Forms.TabPage blissHivePlayerDataTabInventory;
         private System.Windows.Forms.TabPage blissHivePlayerDataTabActivityLog;
-        private System.Windows.Forms.ListView blissHiveActivityLog;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.Panel blissHiveInventoryInventoryPanel;
-        private System.Windows.Forms.GroupBox blissHiveInventoryInventoryGroupBox;
-        private System.Windows.Forms.GroupBox blissHiveInventoryBackpackGroupBox;
-        private System.Windows.Forms.Panel blissHiveInventoryBackpackPanel;
         public System.Windows.Forms.TabControl blissHivePlayerDataTabControl;
-        private System.Windows.Forms.ColumnHeader blissHiveInventoryBackpackQuantityColumn;
-        private System.Windows.Forms.ColumnHeader blissHiveInventoryBackpackItemColumn;
-        private System.Windows.Forms.ColumnHeader blissHiveInventoryInventoryQuantityColumn;
-        private System.Windows.Forms.ColumnHeader blissHiveInventoryInventoryItem;
-        public System.Windows.Forms.ListView blissHiveFormattedLogDataListView;
-        public System.Windows.Forms.TextBox blissHiveRawLogDataTextBox;
-        public System.Windows.Forms.ListView blissHivePlayerDataInventoryInventoryListView;
-        public System.Windows.Forms.ListView blissHivePlayerDataInventoryBackpackListView;
+        public System.Windows.Forms.ListView blissHivePlayerDataFormattedLogDataListView;
+        public System.Windows.Forms.TextBox blissHivePlayerDataRawLogDataTextBox;
         private System.Windows.Forms.TabPage blissHivePlayerDataTabInventoryHistory;
         private System.Windows.Forms.GroupBox blissHivePlayerDataInventoryHistoryBackpackGroupBox;
         private System.Windows.Forms.Panel panel1;
@@ -726,6 +1106,52 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Label blissHivePlayerDataInventoryHistorySelectLbl;
         public System.Windows.Forms.ComboBox blissHivePlayerDataInventoryHistoryComboBox;
+        public System.Windows.Forms.Label blissHiveProgressTimeRemainingLbl;
+        public System.Windows.Forms.ListView blissHiveActivityLog;
+        private System.Windows.Forms.TabPage blissHivePlayerDataTabDebugMonitorHistory;
+        private System.Windows.Forms.GroupBox blissHivePlayerDataDebugMonitorHistoryGroupBox;
+        private System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.ListView blissHivePlayerDataDebugMonitorHistoryListView;
+        private System.Windows.Forms.ColumnHeader blissHivePlayerDataDebugMonitorListViewNameColumn;
+        private System.Windows.Forms.ColumnHeader blissHivePlayerDataDebugMonitorListViewValueColumn;
+        public System.Windows.Forms.ComboBox blissHivePlayerDataDebugMonitorHistoryComboBox;
+        private System.Windows.Forms.Label blissHivePlayerDataDebugMonitorHistorySelectLbl;
+        private System.Windows.Forms.TabPage blissHiveCardControlPlayerTab;
+        private System.Windows.Forms.TabPage blissHiveCardControlObjectTab;
+        public System.Windows.Forms.TabControl blissHiveCardControl;
+        public System.Windows.Forms.TabControl blissHiveObjectDataTabControl;
+        private System.Windows.Forms.TabPage blissHiveObjectDataFormattedLogDataTab;
+        public System.Windows.Forms.ListView blissHiveObjectDataFormattedLogDataListView;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.TabPage blissHiveObjectDataRawLogDataTab;
+        public System.Windows.Forms.TextBox blissHiveObjectDataRawLogDataTextBox;
+        private System.Windows.Forms.TabPage blissHiveObjectDataInventoryTab;
+        public System.Windows.Forms.ComboBox blissHiveObjectDataInventoryHistoryComboBox;
+        private System.Windows.Forms.Label blissHiveObjectDataInventoryHistorySelectLbl;
+        private System.Windows.Forms.GroupBox blissHiveObjectDataInventoryHistoryBackpackGroupBox;
+        private System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.ListView blissHiveObjectDataInventoryHistoryBackpackListView;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.GroupBox blissHiveObjectDataInventoryHistoryInventoryGroupBox;
+        private System.Windows.Forms.Panel panel5;
+        public System.Windows.Forms.ListView blissHiveObjectDataInventoryHistoryInventoryListView;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.TabPage blissHiveObjectDataHealthTab;
+        private System.Windows.Forms.GroupBox blissHiveObjectDataHealthGroupBox;
+        private System.Windows.Forms.Panel panel6;
+        public System.Windows.Forms.ListView blissHiveObjectDataHealthListView;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.TabPage blissHiveObjectDataActivityLogTab;
+        public System.Windows.Forms.ListView blissHiveObjectDataActivityLogListView;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        public System.Windows.Forms.TextBox blissHiveObjectDataHealthTypeEstimateTextBox;
+        private System.Windows.Forms.Label blissHiveObjectDataHealthTypeEstimateLbl;
     }
 }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DayzLogParser.Log.BlissHive.Inventory;
 
 namespace DayzLogParser.Log.BlissHive.Survivor {
     public class BlissHiveLogSurvivor : LogSurvivor {
@@ -11,8 +12,9 @@ namespace DayzLogParser.Log.BlissHive.Survivor {
 
         public Boolean online { get; set; }
 
-        public BlissHiveLogSurvivorInventory inventory { get; set; }
-        public LinkedList<BlissHiveLogSurvivorInventory> inventories { get; set; }
+        public LinkedList<BlissHiveLogActivityItem> activity { get; set; }
+        public LinkedList<BlissHiveLogInventory> inventories { get; set; }
+        public LinkedList<BlissHiveLogDebugMonitor> debugMonitors { get; set; }
         public LinkedList<String> locations { get; protected set; }
 
         public BlissHiveLogSurvivor(String username, String survivorID) : base(username) {
@@ -20,8 +22,9 @@ namespace DayzLogParser.Log.BlissHive.Survivor {
             // If this survivor was made, then he must be online right?
             this.online = true;
 
-            this.inventory = new BlissHiveLogSurvivorInventory();
-            this.inventories = new LinkedList<BlissHiveLogSurvivorInventory>();
+            this.activity = new LinkedList<BlissHiveLogActivityItem>();
+            this.inventories = new LinkedList<BlissHiveLogInventory>();
+            this.debugMonitors = new LinkedList<BlissHiveLogDebugMonitor>();
             this.locations = new LinkedList<String>();
         }
     }

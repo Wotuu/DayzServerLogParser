@@ -9,10 +9,12 @@ using DayzLogParser.Log.BlissHive.Parsing.Survivor.DebugMonitor;
 using DayzLogParser.Log.BlissHive.Parsing.Survivor.Activity;
 using DayzLogParser.Log.BlissHive.Parsing.Survivor.Inventory;
 using DayzLogParser.Log.BlissHive.Inventory;
-using DayzLogParser.Log.BlissHive.Parsing.Survivor;
+using DayzLogParser.Log.BlissHive.Parsing.Object;
+using DayzLogParser.Log.Object;
+using DayzLogParser.Log.BlissHive.Parsing.Object.Inventory;
 
-namespace DayzLogParser.Log.BlissHive.Survivor {
-    public class BlissHiveLogSurvivorContainer : LogSurvivorContainer {
+namespace DayzLogParser.Log.BlissHive.Object {
+    public class BlissHiveLogObjectContainer : LogObjectContainer {
 
         public OnLogParseProgress onParseProgressListeners { get; set; }
 
@@ -20,13 +22,13 @@ namespace DayzLogParser.Log.BlissHive.Survivor {
         /// Loads the survivors into the container list.
         /// </summary>
         /// <param name="blissHive">The blisshive to load survivors from</param>
-        public void LoadSurvivors(BlissHiveLogContainer blissHive) {
-            BlissHiveSurvivorLogParser parser = new BlissHiveSurvivorLogParser(blissHive);
+        public void LoadObjects(BlissHiveLogContainer blissHive) {
+            BlissHiveObjectLogParser parser = new BlissHiveObjectLogParser(blissHive);
             parser.onParseProgressListeners += this.onParseProgressListeners;
             LogParseResult result = parser.Parse();
 
-            foreach (BlissHiveSurvivorLogParseResultEntry entry in result.result) {
-                this.survivors.AddLast(entry.survivor);
+            foreach (BlissHiveObjectLogParseResultEntry entry in result.result) {
+                this.logObjects.AddLast(entry.logObject);
             }
             this.onParseProgressListeners = null;
         }
@@ -35,8 +37,9 @@ namespace DayzLogParser.Log.BlissHive.Survivor {
         /// Loads the inventory of all survivors. MUST LOAD SURVIVORS FIRST.
         /// </summary>
         /// <param name="blissHive">The hive to parse</param>
-        public void LoadSurvivorInventory(BlissHiveLogContainer blissHive) {
-            BlissHiveSurvivorInventoryLogParser parser = new BlissHiveSurvivorInventoryLogParser(blissHive);
+        public void LoadObjectInventory(BlissHiveLogContainer blissHive) {
+
+            BlissHiveObjectInventoryLogParser parser = new BlissHiveObjectInventoryLogParser(blissHive);
             parser.onParseProgressListeners += this.onParseProgressListeners;
             
             LogParseResult result = parser.Parse();
@@ -49,7 +52,8 @@ namespace DayzLogParser.Log.BlissHive.Survivor {
         /// Loads the activity log of all survivors. MUST LOAD SURVIVORS AND INVENTORIES FIRST.
         /// </summary>
         /// <param name="blissHive">The hive to parse</param>
-        public void LoadSurvivorActivity(BlissHiveLogContainer blissHive) {
+        public void LoadObjectActivity(BlissHiveLogContainer blissHive) {
+            /*
             BlissHiveActivityLogParser parser = new BlissHiveActivityLogParser(blissHive);
             parser.onParseProgressListeners += this.onParseProgressListeners;
 
@@ -67,21 +71,7 @@ namespace DayzLogParser.Log.BlissHive.Survivor {
                 }
             }
 
-            // Result is kinda pointless with this parse
-
-            this.onParseProgressListeners = null;
-        }
-
-        /// <summary>
-        /// Loads the debug monitors of all survivors. MUST LOAD SURVIVORS FIRST.
-        /// </summary>
-        /// <param name="blissHive">The hive to parse</param>
-        public void LoadSurvivorDebugMonitor(BlissHiveLogContainer blissHive) {
-            BlissHiveDebugMonitorLogParser parser = new BlissHiveDebugMonitorLogParser(blissHive);
-            parser.onParseProgressListeners += this.onParseProgressListeners;
-
-            LogParseResult result = parser.Parse();
-            // Result is kinda pointless with this parse
+            // Result is kinda pointless with this parse*/
 
             this.onParseProgressListeners = null;
         }

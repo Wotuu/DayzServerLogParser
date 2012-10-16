@@ -5,7 +5,7 @@ using System.Text;
 using DayzLogParser.Log.Parsing;
 using DayzLogParser.Log.BlissHive.Survivor;
 
-namespace DayzLogParser.Log.BlissHive.Parsing {
+namespace DayzLogParser.Log.BlissHive.Parsing.Survivor {
     public class BlissHiveSurvivorLogParser : LogParser {
 
         // If we didn't hear from someone for at least 3 minutes, assume this nigga offline
@@ -51,14 +51,14 @@ namespace DayzLogParser.Log.BlissHive.Parsing {
                     } else {
                         currentUsername = entry.parameters[1];
                         if (!this.ContainsSurvivor(result, currentUsername)) {
-                            // New player joined that wasn't in the log yet!
+                            // New survivor joined that wasn't in the log yet!
                             BlissHiveLogSurvivor survivor = new BlissHiveLogSurvivor(currentUsername, entry.parameters[0]);
                             BlissHiveSurvivorLogParseResultEntry resultEntry =
                                 new BlissHiveSurvivorLogParseResultEntry(entry, survivor);
                             result.AddLast(resultEntry);
                             survivor.logEntries.AddLast(entry);
                         } else {
-                            // New player joined that was already in the logs
+                            // New survivor joined that was already in the logs
                             foreach (BlissHiveSurvivorLogParseResultEntry resultEntry in result) {
                                 if (resultEntry.survivor.survivorID == entry.parameters[0]) {
                                     resultEntry.survivor.online = true;
@@ -125,6 +125,12 @@ namespace DayzLogParser.Log.BlissHive.Parsing {
             return false;
         }
 
+        /// <summary>
+        /// Gets a survivor based on his/her name.
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="survivorName"></param>
+        /// <returns></returns>
         private BlissHiveSurvivorLogParseResultEntry GetSurvivor(LinkedList<LogParseResultEntry> result, String survivorName) {
             foreach (BlissHiveSurvivorLogParseResultEntry entry in result) {
                 if (entry.survivor.username == survivorName)

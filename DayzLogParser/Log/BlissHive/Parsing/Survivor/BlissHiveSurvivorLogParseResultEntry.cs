@@ -5,7 +5,7 @@ using System.Text;
 using DayzLogParser.Log.Parsing;
 using DayzLogParser.Log.BlissHive.Survivor;
 
-namespace DayzLogParser.Log.BlissHive.Parsing {
+namespace DayzLogParser.Log.BlissHive.Parsing.Survivor {
     public class BlissHiveSurvivorLogParseResultEntry : LogParseResultEntry {
         public BlissHiveLogSurvivor survivor { get; private set; }
 

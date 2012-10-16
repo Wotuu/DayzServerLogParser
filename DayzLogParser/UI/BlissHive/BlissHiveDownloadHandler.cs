@@ -73,6 +73,7 @@ namespace DayzLogParser.UI.BlissHive {
                     this.dayzLogParserForm.SetStatusText(0, "Downloading blisshive.log..");
                     this.dayzLogParserForm.SetStatusText(1, "");
                     this.dayzLogParserForm.blissHiveDownloadLogBtn.Text = "Stop";
+                    this.dayzLogParserForm.blissHivePlayerName.Text = "Downloading..";
                     /*} catch(WebException e){
 
                     }*/

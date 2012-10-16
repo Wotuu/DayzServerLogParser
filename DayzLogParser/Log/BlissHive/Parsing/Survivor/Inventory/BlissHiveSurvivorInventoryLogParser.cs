@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using DayzLogParser.Log.Parsing;
 using DayzLogParser.Log.BlissHive.Survivor;
+using DayzLogParser.Log.BlissHive.Inventory;
 
-namespace DayzLogParser.Log.BlissHive.Parsing.Inventory {
-    public class BlissHiveInventoryLogParser : LogParser {
+namespace DayzLogParser.Log.BlissHive.Parsing.Survivor.Inventory {
+    public class BlissHiveSurvivorInventoryLogParser : LogParser {
 
         // If we didn't hear from someone for at least 3 minutes, assume this nigga offline
         public static readonly int OFFLINE_MS_LIMIT = 180000;
 
-        public BlissHiveInventoryLogParser(BlissHiveLogContainer container)
+        public BlissHiveSurvivorInventoryLogParser(BlissHiveLogContainer container)
             : base(container) {
 
         }
@@ -41,10 +42,14 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Inventory {
              **/
             BlissHiveLogContainer blissHiveLogContainer = (BlissHiveLogContainer)this.container;
 
+            LinkedList<String> functionList = new LinkedList<String>();
             foreach (BlissHiveLogEntry entry in container.logs) {
 
+                if (!functionList.Contains(entry.functionName))
+                    functionList.AddLast(entry.functionName);
+
                 if (entry.functionName == "proc_updateSurvivor") {
-                    BlissHiveLogSurvivorInventory inventory = new BlissHiveLogSurvivorInventory(entry);
+                    BlissHiveLogInventory inventory = new BlissHiveLogInventory(entry);
 
                     String inventoryParam = entry.parameters[2];
                     // No point parsing empty inventories
@@ -56,9 +61,12 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Inventory {
                                                 .Replace("[[", "")
                                                 .Replace("\"", "")
                                                 .Split(',');
+                        
                         String[] invItems = invTypes[1]
                                                 .Replace("]]", "")
                                                 .Replace("\"", "")
+                                                .Replace("[", "")
+                                                .Replace("]", "")
                                                 .Split(',');
 
                         foreach (String weapon in invWeapons) {
@@ -66,7 +74,12 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Inventory {
                         }
 
                         foreach (String item in invItems) {
-                            inventory.items.AddLast(new BlissHiveLogItem(item, BlissHiveLogItem.Location.Inventory));
+                            int number = 0;
+                            // Sometimes, the item is a number (ammo for previous ammo clip). 
+                            // We don't want those as an item.
+                            if( !Int32.TryParse(item, out number) ){
+                                inventory.items.AddLast(new BlissHiveLogItem(item, BlissHiveLogItem.Location.Inventory));
+                            }
                         }
                     }
                     String backpackParam = entry.parameters[3];
@@ -152,11 +165,12 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Inventory {
                         foreach (BlissHiveLogSurvivor survivor in
                             blissHiveLogContainer.survivorContainer.survivors) {
                             if (survivor.survivorUpdateID == entry.parameters[0]) {
-                                survivor.inventory = inventory;
+                                // Groups the items for easier readability
+                                inventory.GroupItems();
                                 survivor.inventories.AddLast(inventory);
                             }
                         }
-                        result.AddLast(new BlissHiveInventoryLogParseResultEntry(entry));
+                        result.AddLast(new BlissHiveSurvivorInventoryLogParseResultEntry(entry));
                     }
 
                 } else if (entry.functionName == "proc_killSurvivor") {
@@ -165,6 +179,10 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Inventory {
 
                 this.onParseProgressListeners(count, this.container.logs.Length);
                 count++;
+            }
+
+            foreach (String function in functionList) {
+                Console.WriteLine(function);
             }
 
             this.onParseProgressListeners = null;
