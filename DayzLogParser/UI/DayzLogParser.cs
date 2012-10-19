@@ -14,6 +14,7 @@ using DayzLogParser.Settings.BlissHive;
 using System.Net;
 using DayzLogParser.UI.BlissHive;
 using DayzLogParser.Log.BlissHive.Survivor;
+using DayzLogParser.Web.InsertData;
 
 namespace DayzLogParser.UI {
     public partial class DayzLogParserForm : Form {
@@ -163,6 +164,12 @@ namespace DayzLogParser.UI {
                 this.blissHiveParseHandler = new BlissHiveParseHandler(this);
                 this.blissHiveParseHandler.StartLogParse(openFileDialog.FileName);
             }
+        }
+
+        private void blissHivePlayerDataLocationOpenBrowserBtn_Click(object sender, EventArgs e) {
+            InsertDataPost post = new InsertDataPost();
+            post.ParseData(LogController.GetInstance().blissHiveLogContainer);
+            Console.WriteLine("Response: " + post.DoPost());
         }
     }
 }

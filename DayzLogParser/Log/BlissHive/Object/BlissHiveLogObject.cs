@@ -52,22 +52,8 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// </summary>
         /// <returns></returns>
         public String EstimateObjectType() {
-
-            int glassCount = this.GetGlassCount();
-            int wheelCount = this.GetWheelCount();
-            int items = this.GetItemCount();
-            int backpacks = this.GetBackpackCount();
-            int weapons = this.GetWeaponCount();
-            Boolean hasRotor = this.HasRotor();
-            Boolean hasHull = this.HasHull();
-            Boolean hasEngine = this.HasEngine();
-            Boolean hasFuel = this.HasFuel();
-            Boolean hasFuelTankParts = this.HasFuelTankParts();
-
             LinkedList<BlissHiveLogObjectType> result =
-                BlissHiveLogObjectType.EstimateObjectType(
-                items, backpacks, weapons, wheelCount, glassCount, hasRotor,
-                hasHull, hasEngine, hasFuel, hasFuelTankParts);
+                BlissHiveLogObjectType.EstimateObjectType(this);
 
             // Format it to a string.
             String[] implode = new String[result.Count];
@@ -84,7 +70,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Gets the amount of glass on this object (if any..).
         /// </summary>
         /// <returns>The estimated amount of glass.</returns>
-        private int GetGlassCount() {
+        public int GetGlassCount() {
             return this.GetItemCountByString("glass");
         }
 
@@ -92,7 +78,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Gets the amount of wheels on this object (if any..).
         /// </summary>
         /// <returns>The estimated amount of wheels.</returns>
-        private int GetWheelCount() {
+        public int GetWheelCount() {
             return this.GetItemCountByString("wheel");
         }
 
@@ -100,7 +86,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Checks whether this object has a rotor or not.
         /// </summary>
         /// <returns>Yes or no.</returns>
-        private Boolean HasRotor() {
+        public Boolean HasRotor() {
             return this.GetItemCountByString("rotor") > 0;
         }
 
@@ -108,7 +94,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Checks whether this object has fuel or not.
         /// </summary>
         /// <returns>Yes or no.</returns>
-        private Boolean HasFuel() {
+        public Boolean HasFuel() {
             return this.GetItemCountByString("palivo") > 0;
         }
 
@@ -116,7 +102,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Checks whether this object has a hull or not.
         /// </summary>
         /// <returns>Yes or no.</returns>
-        private Boolean HasHull() {
+        public Boolean HasHull() {
             return this.GetItemCountByString("karoserie") > 0;
         }
 
@@ -124,7 +110,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Checks whether this object has an engine or not.
         /// </summary>
         /// <returns>Yes or no.</returns>
-        private Boolean HasEngine() {
+        public Boolean HasEngine() {
             return this.GetItemCountByString("motor") > 0;
         }
 
@@ -132,7 +118,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Checks whether this object has a fuel tank part or not.
         /// </summary>
         /// <returns>Yes or no.</returns>
-        private Boolean HasFuelTankParts() {
+        public Boolean HasFuelTankParts() {
             return this.GetItemCountByString("fuel") > 0;
         }
 
@@ -141,7 +127,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// </summary>
         /// <param name="contains"></param>
         /// <returns></returns>
-        private int GetItemCountByString(String contains) {
+        public int GetItemCountByString(String contains) {
             int count = 0;
             foreach (BlissHiveLogObjectHealth health in this.health) {
                 if (health.part.Contains(contains))
@@ -155,7 +141,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// TODO: Count in the amount of backpacks.
         /// </summary>
         /// <returns></returns>
-        private int GetItemCount() {
+        public int GetItemCount() {
             return this.GetObjectTypeCount(BlissHiveLogItemType.Item);
         }
 
@@ -163,7 +149,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Gets the backpack count for this vehicle.
         /// </summary>
         /// <returns></returns>
-        private int GetBackpackCount() {
+        public int GetBackpackCount() {
             return this.GetObjectTypeCount(BlissHiveLogItemType.Backpack);
         }
 
@@ -171,7 +157,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// Gets the weapon count for this vehicle.
         /// </summary>
         /// <returns></returns>
-        private int GetWeaponCount() {
+        public int GetWeaponCount() {
             return this.GetObjectTypeCount(BlissHiveLogItemType.Weapon);
         }
 
@@ -180,7 +166,7 @@ namespace DayzLogParser.Log.BlissHive.Object {
         /// </summary>
         /// <param name="itemType"></param>
         /// <returns>The amount.</returns>
-        private int GetObjectTypeCount(BlissHiveLogItemType itemType) {
+        public int GetObjectTypeCount(BlissHiveLogItemType itemType) {
             if (this.inventories.Count > 0) {
                 BlissHiveLogInventory inv = this.inventories.Last.Value;
                 int count = 0;

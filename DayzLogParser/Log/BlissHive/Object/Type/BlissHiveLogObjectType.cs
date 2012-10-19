@@ -95,35 +95,36 @@ namespace DayzLogParser.Log.BlissHive.Object.Type {
         /// <param name="hasFuelTankParts"></param>
         /// <returns>A list with items which may be the object.</returns>
         public static LinkedList<BlissHiveLogObjectType> EstimateObjectType(
-            int itemSlots, int backpackSlots, int weaponSlots,
-            int wheels, int glass,
-            Boolean hasRotor, Boolean hasHull, Boolean hasEngine,
-            Boolean hasFuel, Boolean hasFuelTankParts) {
+            BlissHiveLogObject blissHiveLogObject) {
             
             LinkedList<BlissHiveLogObjectType> result = new LinkedList<BlissHiveLogObjectType>();
 
-            if (itemSlots <= 50 &&
-                backpackSlots <= 5 &&
-                weaponSlots <= 10 &&
-                wheels == 0 && glass == 0 &&
-                !hasRotor && !hasHull && !hasEngine &&
-                !hasFuel && !hasFuelTankParts) {
+            if (blissHiveLogObject.GetItemCount() <= 50 &&
+                blissHiveLogObject.GetBackpackCount() <= 5 &&
+                blissHiveLogObject.GetWeaponCount() <= 10 &&
+                blissHiveLogObject.GetWheelCount() == 0 &&
+                blissHiveLogObject.GetGlassCount() == 0 &&
+                !blissHiveLogObject.HasRotor() &&
+                !blissHiveLogObject.HasHull() &&
+                !blissHiveLogObject.HasEngine() &&
+                !blissHiveLogObject.HasFuel() &&
+                !blissHiveLogObject.HasFuelTankParts()) {
                 // This must only be a tent, end of story!
                 result.AddLast(BlissHiveLogObjectType.tent);
                 return result;
             }
 
             foreach (BlissHiveLogObjectType type in BlissHiveLogObjectType.typeList) {
-                if (type.itemSlots < itemSlots ||
-                    type.backpackSlots < backpackSlots ||
-                    type.weaponSlots < weaponSlots ||
-                    type.wheels < wheels ||
-                    type.glass < glass ||
-                    (!type.hasRotor && hasRotor) ||
-                    (!type.hasFuel && hasFuel) ||
-                    (!type.hasFuelTankParts && hasFuelTankParts) ||
-                    (!type.hasHull && hasHull) ||
-                    (!type.hasEngine && hasEngine)
+                if (type.itemSlots < blissHiveLogObject.GetItemCount() ||
+                    type.backpackSlots < blissHiveLogObject.GetBackpackCount() ||
+                    type.weaponSlots < blissHiveLogObject.GetWeaponCount() ||
+                    type.wheels < blissHiveLogObject.GetWheelCount() ||
+                    type.glass < blissHiveLogObject.GetGlassCount() ||
+                    (!type.hasRotor && blissHiveLogObject.HasRotor()) ||
+                    (!type.hasFuel && blissHiveLogObject.HasFuel()) ||
+                    (!type.hasFuelTankParts && blissHiveLogObject.HasFuelTankParts()) ||
+                    (!type.hasHull && blissHiveLogObject.HasHull()) ||
+                    (!type.hasEngine && blissHiveLogObject.HasEngine())
                     )
                     continue;
                 result.AddLast(type);

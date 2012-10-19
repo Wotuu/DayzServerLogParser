@@ -10,6 +10,7 @@ using DayzLogParser.Log.BlissHive.Parsing.Survivor.Activity;
 using DayzLogParser.Log.BlissHive.Parsing.Survivor.Inventory;
 using DayzLogParser.Log.BlissHive.Inventory;
 using DayzLogParser.Log.BlissHive.Parsing.Survivor;
+using DayzLogParser.Log.BlissHive.Inventory.Survivor;
 
 namespace DayzLogParser.Log.BlissHive.Survivor {
     public class BlissHiveLogSurvivorContainer : LogSurvivorContainer {
@@ -50,16 +51,19 @@ namespace DayzLogParser.Log.BlissHive.Survivor {
         /// </summary>
         /// <param name="blissHive">The hive to parse</param>
         public void LoadSurvivorActivity(BlissHiveLogContainer blissHive) {
-            BlissHiveActivityLogParser parser = new BlissHiveActivityLogParser(blissHive);
+            BlissHiveSurvivorActivityLogParser parser = new BlissHiveSurvivorActivityLogParser(blissHive);
             parser.onParseProgressListeners += this.onParseProgressListeners;
 
             LogParseResult result = parser.Parse();
 
-            foreach (BlissHiveActivityLogParseResultEntry entry in result.result) {
+            foreach (BlissHiveSurvivorActivityLogParseResultEntry entry in result.result) {
                 if( entry.changedItems.Count > 0 ){
                     foreach (BlissHiveLogSurvivor survivor in this.survivors) {
-                        if (survivor.survivorID == entry.changedItems.ElementAt(0).survivor.survivorID) {
-                            foreach( BlissHiveLogActivityItem item in entry.changedItems){
+                        BlissHiveLogSurvivorActivityItem castItem = 
+                            (BlissHiveLogSurvivorActivityItem)entry.changedItems.ElementAt(0);
+
+                        if (survivor.survivorID == castItem.survivor.survivorID) {
+                            foreach( BlissHiveLogSurvivorActivityItem item in entry.changedItems){
                                 survivor.activity.AddLast(item);
                             }
                         }

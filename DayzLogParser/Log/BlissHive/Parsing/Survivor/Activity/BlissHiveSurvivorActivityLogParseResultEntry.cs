@@ -7,11 +7,11 @@ using DayzLogParser.Log.BlissHive.Survivor;
 using DayzLogParser.Log.BlissHive.Inventory;
 
 namespace DayzLogParser.Log.BlissHive.Parsing.Survivor.Activity {
-    public class BlissHiveActivityLogParseResultEntry : LogParseResultEntry {
+    public class BlissHiveSurvivorActivityLogParseResultEntry : LogParseResultEntry {
 
         public LinkedList<BlissHiveLogActivityItem> changedItems { get; set; }
 
-        public BlissHiveActivityLogParseResultEntry(LogEntry entry)
+        public BlissHiveSurvivorActivityLogParseResultEntry(LogEntry entry)
             : base(entry) {
 
         }

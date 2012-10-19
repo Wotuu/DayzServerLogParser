@@ -67,7 +67,8 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Object.Inventory {
                         }
                     }
 
-                    logObject.inventories.AddLast(inventory);
+                    if (inventory.items.Count > 0)
+                        logObject.inventories.AddLast(inventory);
                 }
 
                 this.onParseProgressListeners(count, this.container.logs.Length);

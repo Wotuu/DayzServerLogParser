@@ -94,7 +94,7 @@ namespace DayzLogParser.UI.BlissHive {
                         }
 
                         // Fill the activity log
-                        ListView listView = this.dayzLogParserForm.blissHiveActivityLog;
+                        ListView listView = this.dayzLogParserForm.blissHivePlayerDataActivityLogListView;
                         listView.Items.Clear();
 
                         foreach (BlissHiveLogActivityItem item in survivor.activity) {

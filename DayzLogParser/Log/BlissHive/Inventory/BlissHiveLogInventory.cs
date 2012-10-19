@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DayzLogParser.Log.BlissHive.Survivor;
+using DayzLogParser.Log.BlissHive.Inventory.Object;
+using DayzLogParser.Log.BlissHive.Object;
+using DayzLogParser.Log.BlissHive.Inventory.Survivor;
 
 namespace DayzLogParser.Log.BlissHive.Inventory {
     public class BlissHiveLogInventory {
@@ -70,6 +74,140 @@ namespace DayzLogParser.Log.BlissHive.Inventory {
 
 
             return items;
+        }
+
+        #region Get difference between two inventories
+        /// <summary>
+        /// Gets the difference between two inventories.
+        /// </summary>
+        /// <param name="survivor"></param>
+        /// <param name="before"></param>
+        /// <param name="after"></param>
+        /// <returns></returns>
+        public static LinkedList<BlissHiveLogActivityItem>
+            GetItemDifference(BlissHiveLogInventory before,
+                              BlissHiveLogInventory after) {
+
+            LinkedList<BlissHiveLogActivityItem> result = new LinkedList<BlissHiveLogActivityItem>();
+
+            LinkedList<BlissHiveLogItem> beforeMerged = before.items;
+            LinkedList<BlissHiveLogItem> afterMerged = after.items;
+
+            // Comparing items which were in the inventory, but aren't now
+            //
+            // For each item which was in the inventory before
+            foreach (BlissHiveLogItem item in beforeMerged) {
+                int count = 0;
+                // For each item that was in the inventory after
+                foreach (BlissHiveLogItem otherItem in afterMerged) {
+                    // Can't compare inventory items to backpack items
+                    if (item.location == otherItem.location) {
+                        // If the key is the same
+                        if (otherItem.key == item.key) {
+                            // But the quantity was different ..
+                            if (otherItem.quantity != item.quantity) {
+                                // Something changed, log it
+                                result.AddLast(
+                                    new BlissHiveLogActivityItem(otherItem.quantity - item.quantity, item,
+                                            after.originalLogEntry.timestamp));
+                            }
+                            break;
+                        }
+                    }
+                    // If the item apparantly wasn't in the new inventory
+                    if (count == afterMerged.Count - 1) {
+                        // Log it
+                        result.AddLast(
+                            new BlissHiveLogActivityItem(-1, item,
+                                    after.originalLogEntry.timestamp));
+                    }
+                    // Increase the count
+                    count++;
+                }
+            }
+
+            // Comparing items that are now in the inventory,
+            // but weren't there before
+            //
+            // For each item which was in the inventory after
+            foreach (BlissHiveLogItem item in afterMerged) {
+                int count = 0;
+                // For each item that was in the inventory before
+                foreach (BlissHiveLogItem otherItem in beforeMerged) {
+                    // Can't compare inventory items to backpack items
+                    if (item.location == otherItem.location) {
+                        // If the key is the same
+                        if (otherItem.key == item.key) {
+                            // We already checked it above, skip it
+                            break;
+                        }
+                    }
+                    // If the item apparantly wasn't in the old inventory
+                    if (count == beforeMerged.Count - 1) {
+                        // Log it
+                        result.AddLast(
+                            new BlissHiveLogActivityItem(1, item,
+                                    after.originalLogEntry.timestamp));
+                    }
+                    count++;
+                }
+            }
+
+
+            return result;
+        }
+        #endregion
+
+
+
+        /// <summary>
+        /// Adds an object to a list of normal activity items
+        /// </summary>
+        /// <param name="logObject"></param>
+        /// <param name="activityItems"></param>
+        /// <returns></returns>
+        public static LinkedList<BlissHiveLogActivityItem>
+            AddObject(BlissHiveLogObject logObject,
+                    LinkedList<BlissHiveLogActivityItem> activityItems) {
+
+            LinkedList<BlissHiveLogActivityItem> result =
+                new LinkedList<BlissHiveLogActivityItem>();
+
+            foreach (BlissHiveLogActivityItem activityItem in activityItems) {
+                result.AddLast(
+                    new BlissHiveLogObjectActivityItem(
+                        logObject, activityItem.quantity,
+                        activityItem.item, activityItem.timestamp
+                    )
+                );
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Adds a survivor to a list of normal activity items
+        /// </summary>
+        /// <param name="survivor"></param>
+        /// <param name="activityItems"></param>
+        /// <returns></returns>
+        public static LinkedList<BlissHiveLogActivityItem>
+            AddSurvivor(BlissHiveLogSurvivor survivor,
+                    LinkedList<BlissHiveLogActivityItem> activityItems) {
+
+            LinkedList<BlissHiveLogActivityItem> result =
+                new LinkedList<BlissHiveLogActivityItem>();
+
+            foreach (BlissHiveLogActivityItem activityItem in activityItems) {
+                result.AddLast(
+                    new BlissHiveLogSurvivorActivityItem(
+                        survivor, activityItem.quantity,
+                        activityItem.item, activityItem.timestamp
+                    )
+                );
+            }
+
+            return result;
         }
     }
 }

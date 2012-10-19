@@ -26,9 +26,9 @@ namespace DayzLogParser.UI.BlissHive {
             if ((String)e.Node.Tag == "object") {
                 this.dayzLogParserForm.blissHiveCardControl.SelectedIndex = 1;
                 foreach (BlissHiveLogObject logObject in LogController.GetInstance().blissHiveLogContainer.logObjectContainer.logObjects) {
-                    if (logObject.objectUpdateID == e.Node.Text) {
+                    if (e.Node.Text.Contains(logObject.objectUpdateID)) {
                         this.selectedObject = logObject;
-                this.dayzLogParserForm.blissHivePlayerName.Text = "Object " + e.Node.Text + " (" + logObject.EstimateObjectType() + ")";
+                        this.dayzLogParserForm.blissHivePlayerName.Text = "Object " + e.Node.Text;
 
                         // Fill the formatted data control
                         this.dayzLogParserForm.blissHiveObjectDataFormattedLogDataListView.Items.Clear();
@@ -72,6 +72,16 @@ namespace DayzLogParser.UI.BlissHive {
                         foreach (BlissHiveLogObjectHealth healthEntry in logObject.health) {
                             this.dayzLogParserForm.blissHiveObjectDataHealthListView.Items.Add(
                                 new ListViewItem(new String[2] { healthEntry.part, healthEntry.health + "" }));
+                        }
+
+                        // Fill the activity log
+                        ListView listView = this.dayzLogParserForm.blissHiveObjectDataActivityLogListView;
+                        listView.Items.Clear();
+
+                        foreach (BlissHiveLogActivityItem item in logObject.activity) {
+                            ListViewItem listViewItem =
+                                new ListViewItem(new String[2] { item.timestamp + "", item.ToString() });
+                            listView.Items.Add(listViewItem);
                         }
 
                         this.dayzLogParserForm.blissHiveObjectDataHealthTypeEstimateTextBox.Text =
@@ -128,7 +138,11 @@ namespace DayzLogParser.UI.BlissHive {
                 foreach (BlissHiveLogObject logObject in
                     LogController.GetInstance().blissHiveLogContainer.logObjectContainer.logObjects) {
 
-                    TreeNode objectNode = new TreeNode(logObject.objectUpdateID);
+                    String nodeName = logObject.objectUpdateID;
+                    String objectType = logObject.EstimateObjectType();
+                    if (objectType != "")
+                        nodeName += " (" + objectType + ")";
+                    TreeNode objectNode = new TreeNode(nodeName);
                     objectNode.Tag = "object";
 
                     this.GetObjectsTreeNode().Nodes.Add(objectNode);

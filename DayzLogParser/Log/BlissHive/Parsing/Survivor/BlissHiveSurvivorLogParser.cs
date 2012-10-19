@@ -25,7 +25,7 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Survivor {
 
             foreach (BlissHiveLogEntry entry in container.logs) {
                 // Are we checking the stats now?
-                if (entry.functionName == "proc_getSurvivorStats" ) {
+                if (entry.functionName == "proc_getSurvivorStats") {
                     // Yes, is the user name already set? (Hope so!)
                     if (currentUsername != "") {
                         // Valid, normal result
@@ -81,6 +81,21 @@ namespace DayzLogParser.Log.BlissHive.Parsing.Survivor {
                         if (resultEntry.survivor.survivorUpdateID == entry.parameters[0]) {
                             resultEntry.survivor.lastSignOfActivity = entry.timestampUnix;
                             resultEntry.survivor.logEntries.AddLast(entry);
+
+                            if (entry.parameters[1].Length > 5) {
+                                String[] split = entry.parameters[1].Replace("[", "")
+                                                    .Replace("]", "")
+                                                    .Split(',');
+                                String location = "";
+                                // Sometimes the Z coordinate is missing .. sigh
+                                for (int i = 1; i < split.Length; i++) {
+                                    location += split[i];
+                                    if (i < split.Length - 1) {
+                                        location += ",";
+                                    }
+                                }
+                                resultEntry.survivor.locations.AddLast(location);
+                            }
                             break;
                         }
                     }
